@@ -27,12 +27,12 @@ $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
-            $a="歡迎來到我們的專題!\n請輸入以下的代號來查詢相關訊息!!\nA:客服\nB:介紹";
-            $message = $event['message'];
+          $message = $event['message'];
             switch ($message['type']) {
                 case 'text':
+                    $a="歡迎來到我們的專題!\n請輸入以下的代號來查詢相關訊息!!\nA:客服\nB:介紹";
                 	$m_message = $message['text'];
-                	if($m_message=="")
+                	if($m_message == " ")
                 	{
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
