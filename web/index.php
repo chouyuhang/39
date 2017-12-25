@@ -33,7 +33,7 @@ foreach ($client->parseEvents() as $event) {
                     $a="歡迎來到我們的專題!\n請輸入以下的代號來查詢相關訊息!!\nA:客服\nB:介紹";
                     $Q="請問你要查詢?\na:常見問題\nb:儲值問題";
                 	$m_message = $message['text'];
-                	if($m_message == " ")
+                	if($m_message == "A")
                 	{
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
@@ -44,7 +44,8 @@ foreach ($client->parseEvents() as $event) {
                             )
                         )
                     	));
-                        if($m_message == "A")
+                	}
+                    if($m_message == "a")
                 	{
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
@@ -55,7 +56,6 @@ foreach ($client->parseEvents() as $event) {
                             )
                         )
                     	));
-                	}
                     else{
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
