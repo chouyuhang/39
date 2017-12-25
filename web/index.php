@@ -64,7 +64,7 @@ foreach ($client->parseEvents() as $event) {
                             )
                     	    ));
                 	    }
-                            if($m_message == "A1"||$m_message == "a1"||)
+                            if($m_message == "A1"||$m_message == "a3")
                 	        {
                 		        $client->replyMessage(array(
                                 'replyToken' => $event['replyToken'],
@@ -76,7 +76,7 @@ foreach ($client->parseEvents() as $event) {
                                 )
                     	        ));
                 	        }
-                            if($m_message == "A2"||$m_message == "a2"||)
+                            if($m_message == "A2"||$m_message == "a2")
                 	        {
                 		        $client->replyMessage(array(
                                 'replyToken' => $event['replyToken'],
@@ -87,7 +87,7 @@ foreach ($client->parseEvents() as $event) {
                                     )
                                 )
                     	        ));
-                	        }if($m_message == "A3"||$m_message == "a3"||)
+                	        }if($m_message == "A3"||$m_message == "a3")
                 	        {
                 		        $client->replyMessage(array(
                                 'replyToken' => $event['replyToken'],
@@ -98,7 +98,7 @@ foreach ($client->parseEvents() as $event) {
                                     )
                                 )
                     	        ));
-                	        }if($m_message == "A4"||$m_message == "a4"||)
+                	        }if($m_message == "A4"||$m_message == "a4")
                 	        {
                 		        $client->replyMessage(array(
                                 'replyToken' => $event['replyToken'],
@@ -109,7 +109,7 @@ foreach ($client->parseEvents() as $event) {
                                     )
                                 )
                     	        ));
-                	        }if($m_message == "A5"||$m_message == "a5"||)
+                	        }if($m_message == "A5"||$m_message == "a5")
                 	        {
                 		        $client->replyMessage(array(
                                 'replyToken' => $event['replyToken'],
