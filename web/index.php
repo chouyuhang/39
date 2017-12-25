@@ -55,31 +55,31 @@ foreach ($client->parseEvents() as $event) {
                 	    {
                 		    $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
-                        'messages' => array(array('type' => 'text','text' => $Q1))));
+                        'messages' => array(array('type' => 'text','text' => $A1))));
                 	    }
                     if($m_message == "a2"||$m_message == "A2")
                 	    {
                 		    $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
-                        'messages' => array(array('type' => 'text','text' => $Q1))));
+                        'messages' => array(array('type' => 'text','text' => $A2))));
                 	    }
                     if($m_message == "a3"||$m_message == "A3")
                 	    {
                 		    $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
-                        'messages' => array(array('type' => 'text','text' => $Q1))));
+                        'messages' => array(array('type' => 'text','text' => $A3))));
                 	    }
                     if($m_message == "a4"||$m_message == "A4")
                 	    {
                 		    $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
-                        'messages' => array(array('type' => 'text','text' => $Q1))));
+                        'messages' => array(array('type' => 'text','text' => $A4))));
                 	    }
                     if($m_message == "a5"||$m_message == "A5")
                 	    {
                 		    $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
-                        'messages' => array(array('type' => 'text','text' => $Q1))));
+                        'messages' => array(array('type' => 'text','text' => $A5))));
                 	    }
                     else{
                     $client->replyMessage(array(
