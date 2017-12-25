@@ -43,83 +43,14 @@ foreach ($client->parseEvents() as $event) {
                 	{
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => $Q
-                            )
-                        )
-                    	));
-                	}
+                        'messages' => array(array('type' => 'text','text' => $Q))));
                         if($m_message == "a")
                 	    {
                 		    $client->replyMessage(array(
-                            'replyToken' => $event['replyToken'],
-                            'messages' => array(
-                                array(
-                                    'type' => 'text',
-                                    'text' => $Q1
-                                )
-                            )
-                    	    ));
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(array('type' => 'text','text' => $Q1))));
                 	    }
-                            if($m_message == "A1"||$m_message == "a1")
-                	        {
-                		        $client->replyMessage(array(
-                                'replyToken' => $event['replyToken'],
-                                'messages' => array(
-                                    array(
-                                        'type' => 'text',
-                                        'text' => $A1
-                                    )
-                                )
-                    	        ));
-                	        }
-                            if($m_message == "A2"||$m_message == "a2")
-                	        {
-                		        $client->replyMessage(array(
-                                'replyToken' => $event['replyToken'],
-                                'messages' => array(
-                                    array(
-                                        'type' => 'text',
-                                        'text' => $A2
-                                    )
-                                )
-                    	        ));
-                	        }if($m_message == "A3"||$m_message == "a3")
-                	        {
-                		        $client->replyMessage(array(
-                                'replyToken' => $event['replyToken'],
-                                'messages' => array(
-                                    array(
-                                        'type' => 'text',
-                                        'text' => $A3
-                                    )
-                                )
-                    	        ));
-                	        }if($m_message == "A4"||$m_message == "a4")
-                	        {
-                		        $client->replyMessage(array(
-                                'replyToken' => $event['replyToken'],
-                                'messages' => array(
-                                    array(
-                                        'type' => 'text',
-                                        'text' => $A4
-                                    )
-                                )
-                    	        ));
-                	        }if($m_message == "A5"||$m_message == "a5")
-                	        {
-                		        $client->replyMessage(array(
-                                'replyToken' => $event['replyToken'],
-                                'messages' => array(
-                                    array(
-                                        'type' => 'text',
-                                        'text' => $A5
-                                    )
-                                )
-                    	        ));
-                	        }
+                	}
                     else{
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
