@@ -56,6 +56,7 @@ foreach ($client->parseEvents() as $event) {
                             )
                         )
                     	));
+                	}
                     else{
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
