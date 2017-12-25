@@ -27,7 +27,7 @@ $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
-            $a = "ok\n123";
+            $a = "ok\n789";
            $b="安安";
             $message = $event['message'];
             switch ($message['type']) {
