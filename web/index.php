@@ -45,13 +45,14 @@ foreach ($client->parseEvents() as $event) {
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(array('type' => 'text','text' => $Q))));
-                        if($m_message == "a")
+                        
+                	}
+                    if($m_message == "a")
                 	    {
                 		    $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(array('type' => 'text','text' => $Q1))));
                 	    }
-                	}
                      
                     if($m_message == "a1"||$m_message == "A1")
                 	    {
