@@ -41,16 +41,18 @@ foreach ($client->parseEvents() as $event) {
                 	$m_message = $message['text'];
                 	if($m_message == "A")
                 	{
+                        
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(array('type' => 'text','text' => $Q))));
-                	}
-                     if($m_message == "a")
+                        else if($m_message == "a")
                 	    {
                 		    $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(array('type' => 'text','text' => $Q1))));
                 	    }
+                	}
+                     
                     if($m_message == "a1"||$m_message == "A1")
                 	    {
                 		    $client->replyMessage(array(
