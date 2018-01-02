@@ -16,7 +16,7 @@
  * under the License.
  */
 
-require_once('./LINEBotTiny.php');
+require_once('web/LINEBotTiny.php');
 
 
 
