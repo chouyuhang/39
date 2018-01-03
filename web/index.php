@@ -42,10 +42,10 @@ foreach ($client->parseEvents() as $event) {
                             'text' => $item['gsx$title']['$t'],
                             'actions' => array(
                                 array(
-                                    'type' => 'uri',
-                                    'label' => '查看詳情',
-                                    'uri' => $item['gsx$url']['$t'],
-                                    ),
+                                'type' => 'sticker',
+                                'packageId' => '1',
+                                'stickerId' => '2',
+                                ),
                                 ),
                             );
                         array_push($result, $candidate);
