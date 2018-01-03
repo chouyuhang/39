@@ -29,7 +29,7 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
           $message = $event['message'];
             
-            $json = file_get_contents('https://spreadsheets.google.com/feeds/list/1tQCaj3LUVwH0tBuPrfBY2dOJuF-qzpYEdOqGdNvJRLc/od6/public/values?alt=json');
+            $json = file_get_contents('https://spreadsheets.google.com/feeds/list/1uDfSyQ0tRn8b2idrg-S0_zRMzsyOVmBvYP2qTJDKD3w/od6/public/values?alt=json');
             $data = json_decode($json, true);
             $result = array();
             foreach ($data['feed']['entry'] as $item) {
