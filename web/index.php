@@ -41,17 +41,7 @@ foreach ($client->parseEvents() as $event) {
                             )
                         	));              
                              break;
-            case ($m_message=="魔法石" ): 
-                            $client->replyMessage(array(
-                           'replyToken' => $event['replyToken'],
-                           'messages' => array(
-                             array(
-                                   'type' => 'text',
-                                   'text' => $B2
-                               )
-                            )
-                        	));              
-                             break;
+            
 
 
                 default:
