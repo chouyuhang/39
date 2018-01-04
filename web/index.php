@@ -32,7 +32,7 @@ foreach ($client->parseEvents() as $event) {
             
            $m_message = $message['text'];
             switch($m_message){
-          case ($m_message==B1): 
+          case ($m_message=="魔法石"): 
                             $client->replyMessage(array(
                            'replyToken' => $event['replyToken'],
                            'messages' => array(
