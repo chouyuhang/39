@@ -29,6 +29,8 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
           $message = $event['message'];
             $Q2="B1:如何購買「魔法石」？\nB2:「魔法石」可經由什麼付費平台購買呢？\nB3:如果沒有信用卡可怎麼購買「魔法石」？\nB4:為什麼已成功完成交易，但尚未收到「魔法石」？";
+            
+           $m_message = $message['text'];
             switch($m_message){
           case ($m_message=="魔法石" ): 
                             $client->replyMessage(array(
