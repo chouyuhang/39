@@ -10,7 +10,7 @@ $type = $event-&amp;gt;{"message"}-&amp;gt;{"type"};
 $message = $event-&amp;gt;{"message"};
 $reply_token = $event-&amp;gt;{"replyToken"};
  
-$url = "https://spreadsheets.google.com/feeds/list/e/2PACX-1vQM1rw7ng4utfYxkEwZ8qAftWD91VEmdlm0XB6eNvRoO3PkJnCTVA9ABFUzPhR7sfKEZup4R15w0T-M/od6/public/values?alt=json";
+$url = "https://spreadsheets.google.com/feeds/list/1uDfSyQ0tRn8b2idrg-S0_zRMzsyOVmBvYP2qTJDKD3w/od6/public/values?alt=json";
  
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
