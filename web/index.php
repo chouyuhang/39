@@ -9,7 +9,7 @@ $channelSecret = "a7e8c58d4744adbc363c42bc558db89e";
 // 重要資訊2
 $channelAccessToken = "WI8f+ot/+7IJffBJATgfi1+rnNYCW+RGm1u2SRg2sdOLw2Y0+4gbdJsmh0zmUdtZNvx595o+hvI3XYeFQk66EVpl1mWwDDJOlKRecD6mc8gES9hnbAH+SOcrxw3QWmrmvQPI0WxrXMwB8EVOXPx4FwdB04t89/1O/w1cDnyilFU=";
 // Google表單資料
-$googledataspi = "https://spreadsheets.google.com/feeds/list/1uDfSyQ0tRn8b2idrg-S0_zRMzsyOVmBvYP2qTJDKD3w/od6/public/values?alt=json";
+$googledataspi = "https://spreadsheets.google.com/feeds/list/2PACX-1vQM1rw7ng4utfYxkEwZ8qAftWD91VEmdlm0XB6eNvRoO3PkJnCTVA9ABFUzPhR7sfKEZup4R15w0T-M/od6/public/values?alt=json";
 
 // 建立Client from LINEBotTiny
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
