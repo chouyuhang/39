@@ -48,7 +48,7 @@ array_push($result, $candidate_image);
 }
 }
 }
-// END Google Sheet Keyword Decode
+
  
 $post_data = array(
 "replyToken" =&amp;gt; $reply_token,
@@ -65,7 +65,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 'Content-Type: application/json',
 'Authorization: Bearer '.$access_token
-//'Authorization: Bearer '. TOKEN
+
 ));
 $result = curl_exec($ch);
 curl_close($ch);
