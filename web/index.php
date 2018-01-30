@@ -8,19 +8,20 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
-                case 'text':
-                	$m_message = $message['text'];
-                    if($m_message == "A"){
-                         $client->replyMessage(array(
-                             'replyToken' => $event['replyToken'],
-                             'messages' => array(
-                             array(
-                                   "type": "text",
-                                    "text": "Hello, world"
-                               )
-                            )
-                        	));
-                    }
+                {
+  "replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTA",
+  "type": "message",
+  "timestamp": 1462629479859,
+  "source": {
+    "type": "user",
+    "userId": "U4af4980629..."
+  },
+  "message": {
+    "id": "325708",
+    "type": "text",
+    "text": "Hello, world!"
+  }
+}
                     
                     break;
                 
