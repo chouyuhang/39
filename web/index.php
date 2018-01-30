@@ -8,7 +8,7 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
-                {
+                
   "replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTA",
   "type": "message",
   "timestamp": 1462629479859,
@@ -20,7 +20,7 @@ foreach ($client->parseEvents() as $event) {
     "id": "325708",
     "type": "text",
     "text": "Hello, world!"
-  }
+  
 }
                     
                     break;
