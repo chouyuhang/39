@@ -12,13 +12,22 @@ switch ($event['type']) {
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => $message['text']
-                            )
-                        )
-                    ));
+                            array( 'type' => 'text',
+                                  'text' => $message['text']
+                            ))));
+                            
                     break;
+                            case "image" :
+                             $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                               "type" => "image",
+                               "originalContentUrl" => $message,
+                               "previewImageUrl" => $message . "https://www.penghu-nsa.gov.tw/FileDownload/Album/Big/20161012162551758864338.jpg"
+                                    $
+                            ))))message = getObjContent("jpeg"); );
+				break;
                 default:
                     error_log("Unsupporeted message type: " . $message['type']);
                     break;
