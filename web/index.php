@@ -12,7 +12,10 @@ $post_data = [
   "messages" => [
     [
       "type" => "text",
-      "text" => $message . "123"
+      "text" => $message->{
+        "text"=123
+      }
+
     ]
   ]
 ];
