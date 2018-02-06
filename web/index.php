@@ -17,17 +17,7 @@ switch ($event['type']) {
                             ))));
                             
                     break;
-                            case "image" :
-                             $client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                               "type" => "image",
-                               "originalContentUrl" => $message,
-                               "previewImageUrl" => $message . "https://www.penghu-nsa.gov.tw/FileDownload/Album/Big/20161012162551758864338.jpg"
-                                    
-                            )))));
-				break;
+                            
                 default:
                     error_log("Unsupporeted message type: " . $message['type']);
                     break;
