@@ -40,21 +40,3 @@
     }
   }
 }
-{"events":[
-            {
-             "type":"message",
-             "replyToken":"ec386fad29f54c608b4ec0690e66a8fc",
-             "source":{
-                        "userId":"Ub28a7054f2aa2bfeeb103fb53ca35f32",
-                        "type":"user"
-                      },
-            "timestamp":1486890420086,
-            "message":{
-                       "type":"text",
-                       "id":"5636293333777",
-                       "text":"132"
-                      }
-            }
-          ]
-}
-
