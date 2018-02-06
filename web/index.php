@@ -1,12 +1,9 @@
 <?php
 $access_token ='WI8f+ot/+7IJffBJATgfi1+rnNYCW+RGm1u2SRg2sdOLw2Y0+4gbdJsmh0zmUdtZNvx595o+hvI3XYeFQk66EVpl1mWwDDJOlKRecD6mc8gES9hnbAH+SOcrxw3QWmrmvQPI0WxrXMwB8EVOXPx4FwdB04t89/1O/w1cDnyilFU=';
 //define('TOKEN', '你的Channel Access Token');
-$json_string = file_get_contents('php://input');
-$json_obj = json_decode($json_string);
-$event = $json_obj->{"events"}[0];
-$type  = $event->{"message"}->{"type"};
-$message = $event->{"message"};
-$reply_token = $event->{"replyToken"};
+$receive = json_decode(file_get_contents("php://input"));
+$text = $receive->events[0]->message->text;
+$type = $receive->events[0]->source->type;
 $post_data = [
   "replyToken" => $reply_token,
   if ($type == "room")
@@ -25,6 +22,10 @@ $post_data = [
 		$from = $json_string->events[0]->source->userId;
 	}
 ];
+$content_type = $receive->events[0]->message->type;
+$header = ["Content-Type: application/json", "Authorization: Bearer {" . $channel_access_token . "}"];
+	reply($content_type, $text);
+
 $ch = curl_init("https://api.line.me/v2/bot/message/reply");
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
