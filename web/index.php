@@ -71,7 +71,7 @@ function reply($content_type, $message) {
 	 	
 		$url = "https://api.line.me/v2/bot/message/push";
 		
-		$data = ["to" => $from, "messages" => array(["type" => "text", "text" => $message])];
+		$data = ["to" => $from, "messages" => array(["type" => "text", "text" => $message . "123"])];
 		
 		switch($content_type) {
 		
