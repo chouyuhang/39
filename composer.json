@@ -1,20 +1,60 @@
 {
-	  "events": 
-	  [
-		  {
- 			"replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTA",
-			"type": "message",
-			"timestamp": 1462629479859,
- 			"source": {
-				 "type": "user",
-				 "userId": "U206d25c2ea6bd87c17655609a1c37cb8"
-			 },
-			 "message": {
-				 "id": "325708",
-				 "type": "text",
-				 "text": "Hello, world"
-			  }
-		  }
-	  ]
-	}
+  "name": "linecorp/line-bot-sdk",
+  "description": "SDK of the LINE BOT API for PHP",
+  "keywords": [
+    "LINE",
+    "bot",
+    "sdk"
+  ],
+  "type": "library",
+  "homepage": "https://github.com/line/line-bot-sdk-php",
+  "license": "Apache License Version 2.0",
+  "authors": [
+    {
+      "name": "moznion",
+      "email": "moznion@gmail.com"
+    },
+    {
+      "name": "Satoru Yoshihara",
+      "email": "vaduz0@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8.24",
+    "phpmd/phpmd": "~2.4",
+    "squizlabs/php_codesniffer": "~2.6",
+    "apigen/apigen": "~4.1",
+    "indigophp/hash-compat": "~1.1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "LINE\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "LINE\\Tests\\": "tests/"
+    }
+  }
+}
+{"events":[
+            {
+             "type":"message",
+             "replyToken":"ec386fad29f54c608b4ec0690e66a8fc",
+             "source":{
+                        "userId":"Ub28a7054f2aa2bfeeb103fb53ca35f32",
+                        "type":"user"
+                      },
+            "timestamp":1486890420086,
+            "message":{
+                       "type":"text",
+                       "id":"5636293333777",
+                       "text":"132"
+                      }
+            }
+          ]
+}
 
