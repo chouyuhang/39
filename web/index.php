@@ -9,15 +9,21 @@ $message = $event->{"message"};
 $reply_token = $event->{"replyToken"};
 $post_data = [
   "replyToken" => $reply_token,
-  "messages" => [
-    [
-      "type" => "text",
-      "text" => $message->{
-        "text"=123
-      }
-
-    ]
-  ]
+  if ($type == "room")
+	{
+		// 多人聊天 讀取房間id
+		$from = $json_string->events[0]->source->roomId;
+	} 
+	else if ($type == "group")
+	{
+		// 群組 讀取群組id
+		$from = $json_string->events[0]->source->groupId;
+	}
+	else
+	{
+		// 一對一聊天 讀取使用者id
+		$from = $json_string->events[0]->source->userId;
+	}
 ];
 $ch = curl_init("https://api.line.me/v2/bot/message/reply");
 curl_setopt($ch, CURLOPT_POST, true);
