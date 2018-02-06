@@ -25,7 +25,7 @@ switch ($event['type']) {
                                "type" => "image",
                                "originalContentUrl" => $message,
                                "previewImageUrl" => $message . "https://www.penghu-nsa.gov.tw/FileDownload/Album/Big/20161012162551758864338.jpg"
-                                    $
+                                    
                             )))));
 				break;
                 default:
