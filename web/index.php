@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/vendor/autoload.php';
+require_once('./LINEBotTiny.php');
 
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('WI8f+ot/+7IJffBJATgfi1+rnNYCW+RGm1u2SRg2sdOLw2Y0+4gbdJsmh0zmUdtZNvx595o+hvI3XYeFQk66EVpl1mWwDDJOlKRecD6mc8gES9hnbAH+SOcrxw3QWmrmvQPI0WxrXMwB8EVOXPx4FwdB04t89/1O/w1cDnyilFU='));
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('a7e8c58d4744adbc363c42bc558db89e')]);
