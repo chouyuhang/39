@@ -7,12 +7,12 @@ $signature = $_SERVER["HTTP_" . \LINE\LINEBot\Constant\HTTPHeader::LINE_SIGNATUR
 
 $events = $bot->parseEventRequest(file_get_contents('php://input'), $signature);
 foreach ($events as $event) {
-  if ($event instanceof \LINE\LINEBot\Event\PostbackEvent) {
+  if ($event \LINE\LINEBot\Event\PostbackEvent) {
     error_log('postback : ' . file_get_contents('php://input')); // date data in postback field
   }
 
-  if ($event instanceof \LINE\LINEBot\Event\MessageEvent) {
-    if ($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage) {
+  if ($event \LINE\LINEBot\Event\MessageEvent) {
+    if ($event \LINE\LINEBot\Event\MessageEvent\TextMessage) {
       $json = array(
         "replyToken" => $event->getReplyToken(),
         "messages" => [
