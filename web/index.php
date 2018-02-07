@@ -1,18 +1,18 @@
 <?php
 require_once('./LINEBotTiny.php');
 
-$httpClient = new \chouyuhang\src\LINEBot\HTTPClient\CurlHTTPClient(getenv('WI8f+ot/+7IJffBJATgfi1+rnNYCW+RGm1u2SRg2sdOLw2Y0+4gbdJsmh0zmUdtZNvx595o+hvI3XYeFQk66EVpl1mWwDDJOlKRecD6mc8gES9hnbAH+SOcrxw3QWmrmvQPI0WxrXMwB8EVOXPx4FwdB04t89/1O/w1cDnyilFU='));
-$bot = new \chouyuhang\src\LINEBot($httpClient, ['channelSecret' => getenv('a7e8c58d4744adbc363c42bc558db89e')]);
-$signature = $_SERVER["HTTP_" . \chouyuhang\src\LINEBot\Constant\HTTPHeader::LINE_SIGNATURE];
+$httpClient = new \src\LINEBot\HTTPClient\CurlHTTPClient(getenv('WI8f+ot/+7IJffBJATgfi1+rnNYCW+RGm1u2SRg2sdOLw2Y0+4gbdJsmh0zmUdtZNvx595o+hvI3XYeFQk66EVpl1mWwDDJOlKRecD6mc8gES9hnbAH+SOcrxw3QWmrmvQPI0WxrXMwB8EVOXPx4FwdB04t89/1O/w1cDnyilFU='));
+$bot = new \src\LINEBot($httpClient, ['channelSecret' => getenv('a7e8c58d4744adbc363c42bc558db89e')]);
+$signature = $_SERVER["HTTP_" . \src\LINEBot\Constant\HTTPHeader::LINE_SIGNATURE];
 
 $events = $bot->parseEventRequest(file_get_contents('php://input'), $signature);
 foreach ($events as $event) {
-  if ($event instanceof \chouyuhang\src\LINEBot\Event\PostbackEvent) {
+  if ($event instanceof \src\LINEBot\Event\PostbackEvent) {
     error_log('postback : ' . file_get_contents('php://input')); // date data in postback field
   }
 
-  if ($event instanceof \chouyuhang\src\LINEBot\Event\MessageEvent) {
-    if ($event instanceof \chouyuhang\src\LINEBot\Event\MessageEvent\TextMessage) {
+  if ($event instanceof \src\LINEBot\Event\MessageEvent) {
+    if ($event instanceof \src\LINEBot\Event\MessageEvent\TextMessage) {
       $json = array(
         "replyToken" => $event->getReplyToken(),
         "messages" => [
