@@ -1,7 +1,6 @@
 {
-  {
+  
  	  "events": 
- 	  [
  		  {
  			"replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTA",
  			"type": "message",
@@ -16,8 +15,6 @@
  				 "text": "Hello, world"
  			  }
  		  }
- 	  ]
- 	}
   "type": "library",
   "homepage": "https://github.com/line/line-bot-sdk-php",
   "license": "Apache License Version 2.0",
