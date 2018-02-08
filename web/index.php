@@ -7,7 +7,7 @@
 	$channel_secret = "{a7e8c58d4744adbc363c42bc558db89e}";
 	$channel_access_token = "{WI8f+ot/+7IJffBJATgfi1+rnNYCW+RGm1u2SRg2sdOLw2Y0+4gbdJsmh0zmUdtZNvx595o+hvI3XYeFQk66EVpl1mWwDDJOlKRecD6mc8gES9hnbAH+SOcrxw3QWmrmvQPI0WxrXMwB8EVOXPx4FwdB04t89/1O/w1cDnyilFU=}";
 
-	
+	$myURL = "https://d104.herokuapp.com/update/"
 	$receive = json_decode(file_get_contents("php://input"));		
 	// 讀取收到的訊息內容
 	$text = $receive->events[0]->message->text;
