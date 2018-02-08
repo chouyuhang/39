@@ -11,7 +11,7 @@
 	$receive = json_decode(file_get_contents("php://input"));		
 	// 讀取收到的訊息內容
 	$text = $receive->events[0]->message->text;
-	
+	$url ="https://api.line.me/v2/bot/room/{roomId}/members/ids";
 	// 讀取訊息來源的類型 	[user, group, room]
 	$type = $receive->events[0]->source->type;
 	
