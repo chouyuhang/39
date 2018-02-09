@@ -60,6 +60,7 @@ foreach ($client->parseEvents() as $event) {
                                 'location' => $title.$address.$latitude.$longitude
                             ))));
                     }
+                    break;
             }
             break;
         default:
