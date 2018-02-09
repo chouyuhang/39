@@ -10,29 +10,39 @@ foreach ($client->parseEvents() as $event) {
             switch ($message['type']) {
                 case 'text':
                 	$m_message = $message['text'];
-                    $a=$event['source'];
-                    $b=$a['userId'];
-                    $type = $a['type']; 
-                    $c=$a['roomId'];
+                    $source=$event['source'];
+                    $type = $source['type']; 
+                    $id=$source['userId'];
+                    $roomid=$source['roomId'];
+                    $groupid=$source['groupId'];
                     if($type=="room"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => "message: " . $m_message . "\n" . "roomid: " . $c
+                                'text' => "message: " . $m_message . "\n" . "roomid: " . $roomid
                             ))));
                     }
-                	else if($type=="user")
+                	else if($type=="group")
                 	{
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => "message: " . $m_message . "\n" . "userid: " . $b
+                                'text' => "message: " . $m_message . "\n" . "groupid: " . $groupid
                             ))));
                 	}
+                    else{
+                        $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => "message: " . $m_message . "\n" . "userid: " . $id
+                            ))));
+                    }
                     break;
             }
             break;
