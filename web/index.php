@@ -25,7 +25,6 @@ foreach ($client->parseEvents() as $event) {
                     break;
             }
             break;
-        file_get_contents($url, false, $event['type']);
         default:
             error_log("Unsupporeted event type: " . $event['type']);
             break;
