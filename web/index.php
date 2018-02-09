@@ -15,7 +15,7 @@ foreach ($client->parseEvents() as $event) {
                     $id=$source['userId'];
                     $roomid=$source['roomId'];
                     $groupid=$source['groupId'];
-                    date_default_timezone_set("GMT+8");
+                    date_default_timezone_set('GMT+8');
                     if($type=="room"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
