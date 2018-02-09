@@ -12,7 +12,18 @@ foreach ($client->parseEvents() as $event) {
                 	$m_message = $message['text'];
                     $a=$event['source'];
                     $b=$a['userId'];
-                	if($m_message!="")
+                    $type = $a['type']; 
+                    $c=$a['roomId'];
+                    if($type=="room"){
+                        $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => "message: " . $m_message . "\n" . "roomid: " . $c
+                            ))));
+                    }
+                	else if($type=="user")
                 	{
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
@@ -20,12 +31,9 @@ foreach ($client->parseEvents() as $event) {
                             array(
                                 'type' => 'text',
                                 'text' => "message: " . $m_message . "\n" . "userid: " . $b
-                            )
-                        )
-                    	));
+                            ))));
                 	}
                     break;
-                
             }
             break;
         default:
