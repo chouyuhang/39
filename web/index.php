@@ -19,7 +19,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => "message" . $m_message . "userid" . $b
+                                'text' => "message:<br>" . $m_message . "userid:<br>" . $b
                             )
                         )
                     	));
