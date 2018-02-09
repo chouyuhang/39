@@ -15,7 +15,6 @@ foreach ($client->parseEvents() as $event) {
                     $id=$source['userId'];
                     $roomid=$source['roomId'];
                     $groupid=$source['groupId'];
-                    $time=$event['timestamp'];
                     if($type=="room"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
