@@ -45,10 +45,7 @@ foreach ($client->parseEvents() as $event) {
                             ))));
                     }
                     break;
-            }
-            break;
-            switch ($event['type']) {
-            case 'location':
+                    case 'location':
                     $type=$event['type'];
                     $title=$event['title'];
                     $address=$event['address'];
@@ -64,7 +61,7 @@ foreach ($client->parseEvents() as $event) {
                             ))));
                     }
                     break;
-                    }
+            }
             break;
         default:
             error_log("Unsupporeted event type: " . $event['type']);
