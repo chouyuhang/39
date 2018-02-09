@@ -47,7 +47,7 @@ foreach ($client->parseEvents() as $event) {
                     break;
             }
             break;
-            switch ($message['type']) {
+            switch ($event['type']) {
             case 'location':
                     $location=$event['type'];
                     $title=$event['title'];
