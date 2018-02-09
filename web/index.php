@@ -15,13 +15,14 @@ foreach ($client->parseEvents() as $event) {
                     $id=$source['userId'];
                     $roomid=$source['roomId'];
                     $groupid=$source['groupId'];
+                    $time=$event['timestamp'];
                     if($type=="room"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => "message: " . $m_message . "\n" . "roomid: " . $roomid
+                                'text' => "message: ".$m_message."\n"."roomid:".$roomid."\n"."time".$time
                             ))));
                     }
                 	else if($type=="group")
