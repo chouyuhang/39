@@ -46,18 +46,14 @@ foreach ($client->parseEvents() as $event) {
                     }
                     break;
                     case 'location':
-                    $type=$event['type'];
-                    $title=$event['title'];
-                    $address=$event['address'];
-                    $latitude=$event['latitude'];
-                    $longitude=$event['longitude'];
-                    if($type=="location"){
+                    $address=$message['address'];
+                    if($address!=""){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                             array(
-                                'type' => 'location',
-                                'location' => "title".$title."address".$address."latitude".$latitude."longitude".$longitude
+                                'type' => 'text',
+                                'text' => $address
                             ))));
                     }
                     break;
