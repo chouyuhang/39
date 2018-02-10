@@ -54,7 +54,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $title.$address
+                                'text' => $title."\n".$address
                             ))));
                     }
                     break;
