@@ -8,7 +8,7 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
-                case 'text':
+               /* case 'text':
                 	$m_message = $message['text'];
                     $source=$event['source'];
                     $idtype = $source['type']; 
@@ -44,7 +44,7 @@ foreach ($client->parseEvents() as $event) {
                                 'text' => "message: ".$m_message."\n"."userid: ".$id."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                     }
-                    break;
+                    break;*/
                     case 'location':
                     $address=$message['address'];
                     $title=$message['title'];
