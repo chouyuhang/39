@@ -59,6 +59,7 @@ foreach ($client->parseEvents() as $event) {
                     }
                     break;
                     case 'confirm':
+                    $m_message = $message['text'];
                     $template=$event['type'];
                     $confirmtype=$template['type'];
                     $confirm=$confirmtype['confirm'];
