@@ -11,12 +11,12 @@ foreach ($client->parseEvents() as $event) {
                 case 'text':
                 	$m_message = $message['text'];
                     $source=$event['source'];
-                    $type = $source['type']; 
+                    $idtype = $source['type']; 
                     $id=$source['userId'];
                     $roomid=$source['roomId'];
                     $groupid=$source['groupId'];
                     date_default_timezone_set('Asia/Taipei');
-                    if($type=="room"){
+                    if($idtype=="room"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
@@ -25,7 +25,7 @@ foreach ($client->parseEvents() as $event) {
                                 'text' => "message: ".$m_message."\n"."roomid:".$roomid."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                     }
-                	else if($type=="group")
+                	else if($idtype=="group")
                 	{
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
@@ -55,6 +55,24 @@ foreach ($client->parseEvents() as $event) {
                             array(
                                 'type' => 'text',
                                 'text' => $title."\n".$address
+                            ))));
+                    }
+                    break;
+                    case 'confirm':
+                    $template=$event['type'];
+                    $confirmtype=$template['type'];
+                    $confirm=$confirmtype['confirm'];
+                    $altText=$event['altText'];
+                    $confirmtext=$template['text'];
+                    $confirmtext="身高156cm?";
+                    $confirmactions=$template['actions'];
+                    if($m_message=="156"){
+                        $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => $altText
                             ))));
                     }
                     break;
