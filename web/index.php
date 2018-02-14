@@ -73,7 +73,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $altText
+                                'text' => $altText.$confirmtext.$confirmactions
                             ))));
                     }
                     break;
