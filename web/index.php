@@ -69,17 +69,17 @@ foreach ($client->parseEvents() as $event) {
                                 'altText' => 'Example confirm template',
                                 'template' => array(
                                     'type' => 'confirm',
-                                    'text' => 'Are you sure?',
+                                    'text' => '你156cm嗎?',
                                     'actions' => array(
                                         array(
                                         'type' => 'message',
-                                        'label' => 'Yes',
-                                        'text' => 'Yes'
+                                        'label' => '是',
+                                        'text' => '地精王是你!!'
                                          ),
                                         array(
                                         'type' => 'message',
-                                        'label' => 'No',
-                                        'text' => 'No'
+                                        'label' => '否',
+                                        'text' => '恭喜你比地精王高'
                                         )
                             ))))));
                     }
