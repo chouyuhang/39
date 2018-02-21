@@ -65,7 +65,7 @@ foreach ($client->parseEvents() as $event) {
                     $confirm=$confirmtype['confirm'];
                     $altText=$event['altText'];
                     $confirmtext=$template['text'];
-                    $confirmtext="身高156cm?";
+                    $confirmtext="是否?";
                     $confirmactions=$template['actions'];
                     if($m_message=="156"){
                         $client->replyMessage(array(
