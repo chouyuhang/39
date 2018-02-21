@@ -44,7 +44,7 @@ foreach ($client->parseEvents() as $event) {
                                 'text' => "message: ".$m_message."\n"."userid: ".$id."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                     }
-                    break;*/
+                    break;
                     case 'location':
                     $address=$message['address'];
                     $title=$message['title'];
@@ -57,7 +57,7 @@ foreach ($client->parseEvents() as $event) {
                                 'text' => $title."\n".$address
                             ))));
                     }
-                    break;
+                    break;*/
                     case 'confirm':
                     $m_message = $message['text'];
                     if($m_message=="156"){
@@ -68,19 +68,19 @@ foreach ($client->parseEvents() as $event) {
                                 'type' => 'template',
                                 'altText' => 'Example confirm template',
                                 'template' => array(
-                    'type' => 'confirm', // 類型 (確認)
-                    'text' => 'Are you sure?', // 文字
-                    'actions' => array(
-                        array(
-                            'type' => 'message', // 類型 (訊息)
-                            'label' => 'Yes', // 標籤 1
-                            'text' => 'Yes' // 用戶發送文字 1
-                        ),
-                        array(
-                            'type' => 'message', // 類型 (訊息)
-                            'label' => 'No', // 標籤 2
-                            'text' => 'No' // 用戶發送文字 2
-                        )
+                                    'type' => 'confirm',
+                                    'text' => 'Are you sure?',
+                                    'actions' => array(
+                                        array(
+                                        'type' => 'message',
+                                        'label' => 'Yes',
+                                        'text' => 'Yes'
+                                         ),
+                                        array(
+                                        'type' => 'message',
+                                        'label' => 'No',
+                                        'text' => 'No'
+                                        )
                             ))))));
                     }
                     break;
