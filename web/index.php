@@ -72,8 +72,8 @@ foreach ($client->parseEvents() as $event) {
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                             array(
-                                'type' => 'text',
-                                'text' => $altText.$confirmtext.$confirmactions
+                                'type' => 'template',
+                                'template' => $altText
                             ))));
                     }
                     break;
