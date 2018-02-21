@@ -58,7 +58,7 @@ foreach ($client->parseEvents() as $event) {
                             ))));
                     }
                     break;*/
-                    case 'template':
+                    case 'text':
                     $m_message = $message['text'];
                     if($m_message=="156"){
                         $client->replyMessage(array(
