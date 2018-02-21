@@ -81,10 +81,6 @@ foreach ($client->parseEvents() as $event) {
                             'label' => 'No', // 標籤 2
                             'text' => 'No' // 用戶發送文字 2
                         )
-                    )
-                )
-            )
-        )
                             ))));
                     }
                     break;
