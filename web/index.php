@@ -82,6 +82,7 @@ foreach ($client->parseEvents() as $event) {
                                         'text' => 'NICE'
                                         )
                             ))))));
+                    }
                         else if($m_message=="1"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
@@ -111,8 +112,6 @@ foreach ($client->parseEvents() as $event) {
                             'uri' => 'http://www.takming.edu.tw'
                         )
                             ))))));
-                    }
-                    break;
                     }
                     break;     
             }
