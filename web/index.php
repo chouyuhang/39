@@ -57,7 +57,7 @@ foreach ($client->parseEvents() as $event) {
                                 'text' => $title."\n".$address
                             ))));
                     }
-                    break;
+                    break;*/
                     case 'text':
                     $m_message = $message['text'];
                     if($m_message=="156"){
@@ -83,7 +83,7 @@ foreach ($client->parseEvents() as $event) {
                                         )
                             ))))));
                     }
-                    break;*/
+                    break;
                     case 'text':
                     $m_message = $message['text'];
                     if($m_message=="1"){
@@ -96,8 +96,8 @@ foreach ($client->parseEvents() as $event) {
                                 'template' => array(
                                 'type' => 'buttons',
                     'thumbnailImageUrl' => 'https://api.reh.tw/line/bot/example/assets/images/example.jpg',
-                    'title' => 'Example Menu',
-                    'text' => 'Please select',
+                    'title' => '選單',
+                    'text' => '請選擇',
                     'actions' => array(
                         array(
                             'type' => 'postback',
