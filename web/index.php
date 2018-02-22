@@ -95,7 +95,7 @@ foreach ($client->parseEvents() as $event) {
                                 'altText' => 'Example buttons template',
                                 'template' => array(
                                 'type' => 'buttons',
-                    'thumbnailImageUrl' => 'https://api.reh.tw/line/bot/example/assets/images/example.jpg'',
+                    'thumbnailImageUrl' => 'https://api.reh.tw/line/bot/example/assets/images/example.jpg',
                     'title' => 'Example Menu',
                     'text' => 'Please select',
                     'actions' => array(
@@ -112,7 +112,7 @@ foreach ($client->parseEvents() as $event) {
                         array(
                             'type' => 'uri', 
                             'label' => '德明財經科技大學首頁',
-                            'uri' => 'http://www.takming.edu.tw/'
+                            'uri' => 'http://www.takming.edu.tw'
                         )
                             ))))));
                     }
