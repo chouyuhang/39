@@ -95,7 +95,7 @@ foreach ($client->parseEvents() as $event) {
                                 'altText' => 'Example buttons template',
                                 'template' => array(
                                 'type' => 'buttons',
-                    'thumbnailImageUrl' => 'http://www.takming.edu.tw/schoolinfo/photo/A07.jpg',
+                    'thumbnailImageUrl' => 'https://api.reh.tw/line/bot/example/assets/images/example.jpg'',
                     'title' => 'Example Menu',
                     'text' => 'Please select',
                     'actions' => array(
