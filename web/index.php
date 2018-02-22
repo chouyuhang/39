@@ -8,7 +8,7 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
-               /* case 'text':
+                case 'text':
                 	$m_message = $message['text'];
                     $source=$event['source'];
                     $idtype = $source['type']; 
@@ -57,7 +57,7 @@ foreach ($client->parseEvents() as $event) {
                                 'text' => $title."\n".$address
                             ))));
                     }
-                    break;*/
+                    break;
                     case 'text':
                     $m_message = $message['text'];
                     if($m_message=="156"){
