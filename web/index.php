@@ -92,7 +92,7 @@ foreach ($client->parseEvents() as $event) {
                                 'altText' => 'Example buttons template',
                                 'template' => array(
                                 'type' => 'buttons',
-                    'thumbnailImageUrl' => 'http://www.takming.edu.tw/schoolinfo/photo/A07.jpg',
+                    'thumbnailImageUrl' => 'http://www.takming.edu.tw/schoolinfo/photo/C01.JPG',
                     'title' => '選單',
                     'text' => '請選擇',
                     'actions' => array(
