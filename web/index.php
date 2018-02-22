@@ -86,7 +86,7 @@ foreach ($client->parseEvents() as $event) {
                     break;*/
                     case 'text':
                     $m_message = $message['text'];
-                    if($m_message=="156"){
+                    if($m_message=="1"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
