@@ -92,26 +92,25 @@ foreach ($client->parseEvents() as $event) {
                                 'altText' => 'Example buttons template',
                                 'template' => array(
                                 'type' => 'buttons',
-                    'thumbnailImageUrl' => 'http://www.takming.edu.tw/schoolinfo/photo/A07.jpg',
-                    "imageSize"=> 'contain',
-                    'title' => '選單',
-                    'text' => '請選擇',
-                    'actions' => array(
-                        array(
-                            'type' => 'postback',
-                            'label' => 'Postback example',
-                            'data' => 'action=buy&itemid=123'
-                        ),
-                        array(
-                            'type' => 'message',
-                            'label' => '問候語',
-                            'text' => 'Hello world!'
-                        ),
-                        array(
-                            'type' => 'uri', 
-                            'label' => '德明財經科技大學首頁',
-                            'uri' => 'http://www.takming.edu.tw'
-                        )
+                                'imageBackgroundColor'=> '#0066FF', 	
+                                'title' => '選單',
+                                'text' => '請選擇',
+                                'actions' => array(
+                                     array(
+                                     'type' => 'postback',
+                                     'label' => 'Postback example',
+                                     'data' => 'action=buy&itemid=123'
+                                ),
+                                    array(
+                                    'type' => 'message',
+                                    'label' => '問候語',
+                                    'text' => 'Hello world!'
+                                 ),
+                                    array(
+                                    'type' => 'uri', 
+                                    'label' => '德明財經科技大學首頁',
+                                    'uri' => 'http://www.takming.edu.tw'
+                             )
                             ))))));
                     }
                     break;     
