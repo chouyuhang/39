@@ -95,7 +95,7 @@ foreach ($client->parseEvents() as $event) {
                                 'altText' => 'Example buttons template',
                                 'template' => array(
                                 'type' => 'buttons',
-                    'thumbnailImageUrl' => 'https://api.reh.tw/line/bot/example/assets/images/example.jpg',
+                    'thumbnailImageUrl' => 'http://www.takming.edu.tw/schoolinfo/photo/A07.jpg',
                     'title' => 'Example Menu',
                     'text' => 'Please select',
                     'actions' => array(
@@ -106,13 +106,13 @@ foreach ($client->parseEvents() as $event) {
                         ),
                         array(
                             'type' => 'message',
-                            'label' => 'Message example',
-                            'text' => 'Message example'
+                            'label' => '問候語',
+                            'text' => 'Hello world!'
                         ),
                         array(
                             'type' => 'uri', 
-                            'label' => 'Uri example',
-                            'uri' => 'https://github.com/GoneTone/line-example-bot-php'
+                            'label' => '德明財經科技大學首頁',
+                            'uri' => 'http://www.takming.edu.tw/'
                         )
                             ))))));
                     }
