@@ -8,7 +8,7 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
-                case 'text':
+                /*case 'text':
                 	$m_message = $message['text'];
                     $source=$event['source'];
                     $idtype = $source['type']; 
@@ -74,13 +74,46 @@ foreach ($client->parseEvents() as $event) {
                                         array(
                                         'type' => 'message',
                                         'label' => '是',
-                                        'text' => '地精王是你!!'
+                                        'text' => 'QQ'
                                          ),
                                         array(
                                         'type' => 'message',
                                         'label' => '否',
-                                        'text' => '恭喜你比地精王高'
+                                        'text' => 'NICE'
                                         )
+                            ))))));
+                    }
+                    break;*/
+                    case 'text':
+                    $m_message = $message['text'];
+                    if($m_message=="156"){
+                        $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'template', 
+                                'altText' => 'Example buttons template',
+                                'template' => array(
+                                'type' => 'buttons',
+                    'thumbnailImageUrl' => 'https://api.reh.tw/line/bot/example/assets/images/example.jpg',
+                    'title' => 'Example Menu',
+                    'text' => 'Please select',
+                    'actions' => array(
+                        array(
+                            'type' => 'postback',
+                            'label' => 'Postback example',
+                            'data' => 'action=buy&itemid=123'
+                        ),
+                        array(
+                            'type' => 'message',
+                            'label' => 'Message example',
+                            'text' => 'Message example'
+                        ),
+                        array(
+                            'type' => 'uri', 
+                            'label' => 'Uri example',
+                            'uri' => 'https://github.com/GoneTone/line-example-bot-php'
+                        )
                             ))))));
                     }
                     break;
