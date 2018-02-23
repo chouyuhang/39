@@ -16,7 +16,7 @@ foreach ($client->parseEvents() as $event) {
                     $roomid=$source['roomId'];
                     $groupid=$source['groupId'];
                     date_default_timezone_set('Asia/Taipei');
-                    if($m_message!="安安" && $idtype=="room"){
+                    if($m_message=="安安" && $idtype=="room"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
@@ -25,7 +25,7 @@ foreach ($client->parseEvents() as $event) {
                                 'text' => "message: ".$m_message."\n"."userid: ".$id."\n"."roomid:".$roomid."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                     }
-                	else if($m_message!="安安" && $idtype=="group")
+                	else if($m_message=="安安" && $idtype=="group")
                 	{
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
@@ -35,7 +35,7 @@ foreach ($client->parseEvents() as $event) {
                                 'text' => "message: ".$m_message."\n"."userid: ".$id."\n"."groupid: ".$groupid."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                 	}
-                    else if($m_message!="安安" && $idtype=="id"){
+                    else if($m_message=="安安" && $idtype=="id"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
