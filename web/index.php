@@ -16,7 +16,7 @@ foreach ($client->parseEvents() as $event) {
                     $roomid=$source['roomId'];
                     $groupid=$source['groupId'];
                     date_default_timezone_set('Asia/Taipei');
-                    if($idtype=="room" && $m_message!=156){
+                    if($idtype=="room" && $m_message!="156"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
@@ -25,7 +25,7 @@ foreach ($client->parseEvents() as $event) {
                                 'text' => "message: ".$m_message."\n"."userid: ".$id."\n"."roomid:".$roomid."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                     }
-                	else if($idtype=="group" && $m_message!=156)
+                	else if($idtype=="group" && $m_message!="156")
                 	{
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
@@ -35,7 +35,7 @@ foreach ($client->parseEvents() as $event) {
                                 'text' => "message: ".$m_message."\n"."userid: ".$id."\n"."groupid: ".$groupid."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                 	}
-                    else if($idtype=="id" && $m_message!=156){
+                    else if($idtype=="id" && $m_message!="156"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
@@ -44,23 +44,7 @@ foreach ($client->parseEvents() as $event) {
                                 'text' => "message: ".$m_message."\n"."userid: ".$id."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                     }
-                    break;
-                    case 'location':
-                    $address=$message['address'];
-                    $title=$message['title'];
-                    if($address!=""){
-                        $client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => $title."\n".$address
-                            ))));
-                    }
-                    break;
-                    case 'text':
-                    $m_message = $message['text'];
-                    if($m_message=="156"){
+                    else if($m_message=="156"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
@@ -166,7 +150,20 @@ foreach ($client->parseEvents() as $event) {
                                 )
                             ))))))));
                     }
-                    break;     
+                    break;
+                    case 'location':
+                    $address=$message['address'];
+                    $title=$message['title'];
+                    if($address!=""){
+                        $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => $title."\n".$address
+                            ))));
+                    }
+                    break;  
             }
             break;
         default:
