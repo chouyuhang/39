@@ -25,7 +25,7 @@ foreach ($client->parseEvents() as $event) {
                                 'text' => "message: ".$m_message."\n"."userid: ".$id."\n"."roomid:".$roomid."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                     }
-                	else if($idtype=="group" && $m_message!="156")
+                	else if($idtype=="group" && ($m_message!="156" || $m_message!="1"|| $m_message!="2"))
                 	{
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
