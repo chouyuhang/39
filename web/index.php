@@ -16,7 +16,7 @@ foreach ($client->parseEvents() as $event) {
                     $roomid=$source['roomId'];
                     $groupid=$source['groupId'];
                     date_default_timezone_set('Asia/Taipei');
-                    if($idtype=="room" && $m_message!="156"){
+                    if($idtype=="room" && ($m_message!="156" || $m_message!="1"|| $m_message!="2")){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
@@ -35,7 +35,7 @@ foreach ($client->parseEvents() as $event) {
                                 'text' => "message: ".$m_message."\n"."userid: ".$id."\n"."groupid: ".$groupid."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                 	}
-                    else if($idtype=="id" && $m_message!="156"){
+                    else if($idtype=="id" && ($m_message!="156" || $m_message!="1"|| $m_message!="2")){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
