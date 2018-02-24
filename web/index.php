@@ -152,6 +152,8 @@ foreach ($client->parseEvents() as $event) {
                     }
                     break;
                     case 'location':
+                    $source=$event['source'];
+                    $idtype = $source['type']; 
                     $id=$source['userId'];
                     $address=$message['address'];
                     $title=$message['title'];
