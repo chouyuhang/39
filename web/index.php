@@ -162,7 +162,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $title."\n".$address."\n".$latitude."\n".$longitude
+                                'text' => $title."\n".$address."\n"."經度:".$longitude."\n"."緯度".$latitude
                             ))));
                     }
                     break;  
