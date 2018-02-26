@@ -80,9 +80,9 @@ foreach ($client->parseEvents() as $event) {
                                 'text' => '請選擇',
                                 'actions' => array(
                                      array(
-                                     'type' => 'postback',
-                                     'label' => 'Postback example',
-                                     'data' => 'action=buy&itemid=123'
+                                    'type' => 'message',
+                                    'label' => '問候語',
+                                    'text' => 'Hello world!'
                                 ),
                                     array(
                                     'type' => 'message',
@@ -112,9 +112,9 @@ foreach ($client->parseEvents() as $event) {
                             'text' => 'Description 1',
                             'actions' => array(
                                 array(
-                                    'type' => 'postback',
-                                    'label' => 'postback 1',
-                                    'data' => 'action=buy&itemid=123'
+                                    'type' => 'message',
+                                    'label' => '問候語',
+                                    'text' => 'Hello world!'
                                 ),
                                 array(
                                     'type' => 'message',
@@ -134,9 +134,9 @@ foreach ($client->parseEvents() as $event) {
                             'text' => 'Description 2',
                             'actions' => array(
                                 array(
-                                    'type' => 'postback',
-                                    'label' => 'postback 2',
-                                    'data' => 'action=buy&itemid=123'
+                                    'type' => 'message',
+                                    'label' => '問候語',
+                                    'text' => 'Hello world!'
                                 ),
                                 array(
                                     'type' => 'message',
@@ -173,7 +173,7 @@ foreach ($client->parseEvents() as $event) {
                     $m_message = $message['text'];
                     $packageId=$event['packageId'];
                     $stickerId=$event['stickerId'];
-                    if($m_message==3){
+                    if($m_message=="3"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
