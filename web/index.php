@@ -169,7 +169,7 @@ foreach ($client->parseEvents() as $event) {
                             ))));
                     }
                     break;  
-                    case 'text':
+                    case 'sticker':
                     $m_message = $message['text'];
                     $packageId=$event['packageId'];
                     $stickerId=$event['stickerId'];
