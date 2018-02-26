@@ -170,9 +170,10 @@ foreach ($client->parseEvents() as $event) {
                     }
                     break;  
                     case 'sticker':
+                    $m_message = $message['text'];
                     $packageId=$event['packageId'];
                     $stickerId=$event['stickerId'];
-                    if($address!=""){
+                    if($m_message==$event['sticker']){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
