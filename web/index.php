@@ -179,7 +179,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'sticker',
-                                'packageId' => $packageId
+                                'packageId' => $packageId,
                                 'stickerId' => $stickerId
                             ))));
                     }
