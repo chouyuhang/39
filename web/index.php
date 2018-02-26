@@ -15,7 +15,7 @@ foreach ($client->parseEvents() as $event) {
                     $id=$source['userId'];
                     $roomid=$source['roomId'];
                     $groupid=$source['groupId'];
-                    $displayName=$message['displayName'];
+                    $displayName=$source['displayName'];
                     date_default_timezone_set('Asia/Taipei');
                     if($m_message=="安安" && $idtype=="room"){
                         $client->replyMessage(array(
