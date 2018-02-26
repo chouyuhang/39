@@ -150,18 +150,6 @@ foreach ($client->parseEvents() as $event) {
                                 )
                             ))))))));                        
                     }
-                    $packageId=$event['packageId'];
-                    $stickerId=$event['stickerId'];
-                    if($m_message=="3"){
-                        $client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'sticker',
-                                'packageId' => '1',
-                                'stickerId' => '2'
-                            ))));
-                    }
                     break;
                     case 'location':
                     $source=$event['source'];
@@ -181,6 +169,21 @@ foreach ($client->parseEvents() as $event) {
                             ))));
                     }
                     break;  
+                    case 'sticker':
+                    $type=$event['type'];
+                    $packageId=$event['packageId'];
+                    $stickerId=$event['stickerId'];
+                    if($type==$type['sticker']){
+                        $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'sticker',
+                                'packageId' => $packageId,
+                                'stickerId' => $stickerId
+                            ))));
+                    }
+                    break;
             }
             break;
         default:
