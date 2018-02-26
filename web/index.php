@@ -148,7 +148,19 @@ foreach ($client->parseEvents() as $event) {
                                     'label' => 'Uri example 2',
                                     'uri' => 'https://github.com/GoneTone/line-example-bot-php'
                                 )
-                            ))))))));
+                            ))))))));                        
+                    }
+                    $packageId=$event['packageId'];
+                    $stickerId=$event['stickerId'];
+                    if($m_message=="3"){
+                        $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'sticker',
+                                'packageId' => '1',
+                                'stickerId' => '2'
+                            ))));
                     }
                     break;
                     case 'location':
@@ -169,21 +181,6 @@ foreach ($client->parseEvents() as $event) {
                             ))));
                     }
                     break;  
-                    case 'sticker':
-                    $m_message = $message['text'];
-                    $packageId=$event['packageId'];
-                    $stickerId=$event['stickerId'];
-                    if($m_message=="3"){
-                        $client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'sticker',
-                                'packageId' => '1',
-                                'stickerId' => '2'
-                            ))));
-                    }
-                    break;
             }
             break;
         default:
