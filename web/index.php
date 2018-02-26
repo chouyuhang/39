@@ -169,6 +169,19 @@ foreach ($client->parseEvents() as $event) {
                             ))));
                     }
                     break;  
+                    case 'sticker':
+                    $packageId=$event['packageId'];
+                    $stickerId=$event['stickerId'];
+                    if($address!=""){
+                        $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'sticker',
+                                'sticker' => $packageId.$stickerId
+                            ))));
+                    }
+                    break;
             }
             break;
         default:
