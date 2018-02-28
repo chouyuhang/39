@@ -1,8 +1,12 @@
 <?php
+use LINE\LINEBot\HTTPClient\CurlHTTPClient;
+use LINE\LINEBot;
 require_once('./LINEBotTiny.php');
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('WI8f+ot/+7IJffBJATgfi1+rnNYCW+RGm1u2SRg2sdOLw2Y0+4gbdJsmh0zmUdtZNvx595o+hvI3XYeFQk66EVpl1mWwDDJOlKRecD6mc8gES9hnbAH+SOcrxw3QWmrmvQPI0WxrXMwB8EVOXPx4FwdB04t89/1O/w1cDnyilFU=');
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => 'a7e8c58d4744adbc363c42bc558db89e']);
 
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
