@@ -20,7 +20,7 @@ foreach ($client->parseEvents() as $event) {
                      echo $profile['displayName'];
                      echo $profile['pictureUrl'];
                      echo $profile['statusMessage'];
-                    }
+                    }break;
                 /*case 'text':
                 	$m_message = $message['text'];
                     $source=$event['source'];
