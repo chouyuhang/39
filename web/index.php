@@ -12,7 +12,7 @@ foreach ($client->parseEvents() as $event) {
                 case 'text':
                 	$m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $id=$source['userId'];
                     $roomid=$source['roomId']; $groupid=$source['groupId']; date_default_timezone_set('Asia/Taipei');
-                    $response = $client->getProfile('<userId>');
+                    $response = $client->getProfile('Ub28a7054f2aa2bfeeb103fb53ca35f32');
                     if ($response->isSucceeded()) {
                      $profile = $response->getJSONDecodedBody();
                      echo $profile['displayName'];
