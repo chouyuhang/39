@@ -5,10 +5,27 @@ $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
-$bot = new \LINE\LINEBot(new CurlHTTPClient('WI8f+ot/+7IJffBJATgfi1+rnNYCW+RGm1u2SRg2sdOLw2Y0+4gbdJsmh0zmUdtZNvx595o+hvI3XYeFQk66EVpl1mWwDDJOlKRecD6mc8gES9hnbAH+SOcrxw3QWmrmvQPI0WxrXMwB8EVOXPx4FwdB04t89/1O/w1cDnyilFU=
-'), [
-    'channelSecret' => 'a7e8c58d4744adbc363c42bc558db89e'
-]);
+$json_content = file_get_contents('php://input');
+$json = json_decode($json_content, true);
+
+// 可以一次送來多筆資料，所以是陣列
+foreach ($json['result'] as $result) {
+    $content = $result['content'];
+    if ($result['eventType'] == '138311609100106403') {
+        // 加入好友或封鎖
+        $mid = $content['params'][0];
+        if ($content['opType'] == 4) {
+            echo '加入好友 ' . $mid;
+        }
+        if ($content['opType'] == 8) {
+            echo '封鎖 ' . $mid;
+        }
+        // 利用 curl 另外取得 user 資料
+        $profile = curlUserProfileFromLine($mid);
+        echo 'name = ' . $profile['displayName'];
+        echo '<img src="' . $profile['pictureUrl'] . '" />';
+    }
+}
 
 
 foreach ($client->parseEvents() as $event) {
