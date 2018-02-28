@@ -76,7 +76,7 @@ foreach ($client->parseEvents() as $event) {
                                         array(
                                         'type' => 'datetimepicker',
                                         'label' => '請選擇',
-                                        'data' => 'datestring',
+                                        'data' => 'storeId=12345',
                                         'mode' => 'datetime',
                                         'initial' => '2018-01-01t00:00',
                                         'max' => '2020-12-30t00:00',
