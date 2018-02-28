@@ -2,7 +2,7 @@
 use LINE\LINEBot;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
 $response = $bot->getProfile('<userId>');
-                    if ($m_message=="1") {
+                    if ($response->isSucceeded()) {
                      $profile = $response->getJSONDecodedBody();
                      echo $profile['displayName'];
                      echo $profile['pictureUrl'];
