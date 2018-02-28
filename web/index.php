@@ -10,13 +10,6 @@ $bot = new \LINE\LINEBot(new CurlHTTPClient('WI8f+ot/+7IJffBJATgfi1+rnNYCW+RGm1u
     'channelSecret' => 'a7e8c58d4744adbc363c42bc558db89e'
 ]);
 
-$res = $bot->getProfile('user-id');
-if ($res->isSucceeded()) {
-    $profile = $res->getJSONDecodedBody();
-    $displayName = $profile['displayName'];
-    $statusMessage = $profile['statusMessage'];
-    $pictureUrl = $profile['pictureUrl'];
-};
 
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
