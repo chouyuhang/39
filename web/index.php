@@ -77,9 +77,9 @@ foreach ($client->parseEvents() as $event) {
                                         'type' => 'datetimepicker',
                                         'label' => '請選擇',
                                         'mode' => 'datetime',
-                                        'initial' => '2018-01-01t00:00',
-                                        'max' => '2020-01-01t00:00',
-                                        'min' => '2017-01-01t00:00'
+                                        'initial' => "2018-01-01t00:00",
+                                        'max' => "2020-01-01t00:00",
+                                        'min' => "2017-01-01t00:00"
                                          ),
                                         array(
                                         'type' => 'message',
