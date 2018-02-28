@@ -1,14 +1,27 @@
 <?php
+use LINE\LINEBot;
+use LINE\LINEBot\HTTPClient\CurlHTTPClient;
+
 require_once('./LINEBotTiny.php');
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
+
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
-                case 'text':
+                    case'text':
+                    $m_message = $message['text'];
+                    $response = $bot->getProfile('<userId>');
+                    if ($m_message=="1") {
+                     $profile = $response->getJSONDecodedBody();
+                     echo $profile['displayName'];
+                     echo $profile['pictureUrl'];
+                     echo $profile['statusMessage'];
+                    }
+                /*case 'text':
                 	$m_message = $message['text'];
                     $source=$event['source'];
                     $idtype = $source['type']; 
@@ -182,7 +195,7 @@ foreach ($client->parseEvents() as $event) {
                                 'stickerId' => $stickerId
                             ))));
                     }
-                    break;
+                    break;*/
             }
             break;
         default:
