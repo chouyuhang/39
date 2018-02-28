@@ -14,13 +14,15 @@ foreach ($client->parseEvents() as $event) {
             $message = $event['message'];
             switch ($message['type']) {
                 case 'text':
-                	$m_message = $message['text'];
-                    $source=$event['source'];
-                    $idtype = $source['type']; 
-                    $id=$source['userId'];
-                    $roomid=$source['roomId'];
-                    $groupid=$source['groupId'];
-                    date_default_timezone_set('Asia/Taipei');
+                	$m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $id=$source['userId'];
+                    $roomid=$source['roomId']; $groupid=$source['groupId']; date_default_timezone_set('Asia/Taipei');
+                    $response = $client->getProfile('<userId>');
+                    if ($response->isSucceeded()) {
+                     $profile = $response->getJSONDecodedBody();
+                     echo $profile['displayName'];
+                     echo $profile['pictureUrl'];
+                     echo $profile['statusMessage'];
+                    };
                     if($m_message=="安安" && $idtype=="room"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
