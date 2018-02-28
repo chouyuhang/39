@@ -71,12 +71,16 @@ foreach ($client->parseEvents() as $event) {
                                 'altText' => 'Example confirm template',
                                 'template' => array(
                                     'type' => 'confirm',
-                                    'text' => '選擇日期',
+                                    'text' => '請選擇日期',
                                     'actions' => array(
                                         array(
                                         'type' => 'datetimepicker',
                                         'label' => '請選擇',
+                                        'data' => 'datestring',
                                         'mode' => 'datetime',
+                                        'initial' => '2018-01-01t00:00',
+                                        'max' => '2020-12-30t00:00',
+                                        'min' => '2017-01-01t00:00'
                                          ),
                                         array(
                                         'type' => 'message',
