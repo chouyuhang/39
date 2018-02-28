@@ -4,30 +4,6 @@ require_once('./LINEBotTiny.php');
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
-
-$json_content = file_get_contents('php://input');
-$json = json_decode($json_content, true);
-
-// 可以一次送來多筆資料，所以是陣列
-foreach ($json['result'] as $result) {
-    $content = $result['content'];
-    if ($result['eventType'] == '138311609100106403') {
-        // 加入好友或封鎖
-        $mid = $content['params'][0];
-        if ($content['opType'] == 4) {
-            echo '加入好友 ' . $mid;
-        }
-        if ($content['opType'] == 8) {
-            echo '封鎖 ' . $mid;
-        }
-        // 利用 curl 另外取得 user 資料
-        $profile = curlUserProfileFromLine($mid);
-        echo 'name = ' . $profile['displayName'];
-        echo '<img src="' . $profile['pictureUrl'] . '" />';
-    }
-}
-
-
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
@@ -86,8 +62,33 @@ foreach ($client->parseEvents() as $event) {
                                         'text' => 'NICE'
                                         )
                             ))))));
+                    }else if($m_message=="1"){
+                        $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'template',
+                                'altText' => 'Example confirm template',
+                                'template' => array(
+                                    'type' => 'confirm',
+                                    'text' => '選擇日期',
+                                    'actions' => array(
+                                        array(
+                                        'type' => 'datetimepicker',
+                                        'label' => '請選擇',
+                                        'mode' => 'datetime',
+                                        'initial' => '2018-01-01t00:00',
+                                        'max' => '2020-01-01t00:00',
+                                        'min' => '2017-01-01t00:00'
+                                         ),
+                                        array(
+                                        'type' => 'message',
+                                        'label' => '取消',
+                                        'text' => '請使用看看'
+                                        )
+                            ))))));
                     }
-                        else if($m_message=="1"){
+                        else if($m_message=="2"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
@@ -116,7 +117,7 @@ foreach ($client->parseEvents() as $event) {
                              )
                             ))))));
                     }
-                    else if($m_message=="2"){
+                    else if($m_message=="3"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
