@@ -19,7 +19,7 @@ foreach ($client->parseEvents() as $event) {
                      echo $profile['pictureUrl'];
                      echo $profile['statusMessage'];
                     };
-                    if($m_message=="安安" && $idtype=="room"){
+                    else if($m_message=="安安" && $idtype=="room"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
