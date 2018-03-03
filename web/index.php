@@ -11,14 +11,16 @@ foreach ($client->parseEvents() as $event) {
             switch ($message['type']) {
                 case 'text':
                 	$m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $id=$source['userId'];
-                    $roomid=$source['roomId']; $groupid=$source['groupId']; date_default_timezone_set('Asia/Taipei');
+                    $roomid=$source['roomId']; $groupid=$source['groupId']; $displayName=$message['displayName'];
+                    $pictureUrl=$message['pictureUrl'];
+                    date_default_timezone_set('Asia/Taipei');
                     if($m_message=="安安" && $idtype=="room"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => "message: ".$m_message."\n"."userid: ".$id."\n"."roomid:".$roomid."\n"."time: ".date('Y-m-d h:i:sa')
+                                'text' => "message: ".$m_message."\n"."userid: ".$id."\n"."roomid:".$roomid."\n"."time: ".date('Y-m-d h:i:sa')."\n".$displayName.$pictureUrl
                             ))));
                     }
                 	else if($m_message=="安安" && $idtype=="group")
