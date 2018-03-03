@@ -20,7 +20,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => "message: ".$m_message."\n"."userid: ".$id."\n"."roomid:".$roomid."\n"."time: ".date('Y-m-d h:i:sa')."\n".$displayName.$pictureUrl
+                                'text' => "message: ".$m_message."\n".$displayName."userid: ".$id.$pictureUrl."\n"."roomid:".$roomid."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                     }
                 	else if($m_message=="安安" && $idtype=="group")
