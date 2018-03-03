@@ -20,7 +20,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => "message: ".$m_message."\n".$displayName."userid: ".$id.$pictureUrl."\n"."roomid:".$roomid."\n"."time: ".date('Y-m-d h:i:sa')
+                                'text' => $displayName."userid: ".$id.$pictureUrl."\n"."roomid:".$roomid."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                     }
                 	else if($m_message=="安安" && $idtype=="group")
@@ -30,7 +30,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => "message: ".$m_message."\n"."userid: ".$id."\n"."groupid: ".$groupid."\n"."time: ".date('Y-m-d h:i:sa')
+                                'text' => "userid: ".$id."\n"."groupid: ".$groupid."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                 	}
                     else if($m_message=="安安" && $idtype=="user"){
@@ -39,7 +39,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => "message: ".$m_message."\n"."userid: ".$id."\n"."time: ".date('Y-m-d h:i:sa')
+                                'text' => "userid: ".$id."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                     }
                     else if($m_message=="156"){
