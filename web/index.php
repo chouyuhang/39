@@ -206,6 +206,48 @@ foreach ($client->parseEvents() as $event) {
                             ))));
                     }
                     break;
+                    case 'image':
+                    $type=$message['type'];
+                    $originalContentUrl=$message['originalContentUrl'];
+                    $previewImageUrl=$message['previewImageUrl'];
+                    if($type!=""){
+                        $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => $type."\n".$originalContentUrl."\n".$previewImageUrl
+                            ))));
+                    }
+                    break;
+                    case 'video':
+                    $type=$message['type'];
+                    $originalContentUrl=$message['originalContentUrl'];
+                    $previewImageUrl=$message['previewImageUrl'];
+                    if($type!=""){
+                        $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => $type."\n".$originalContentUrl."\n".$previewImageUrl
+                            ))));
+                    }
+                    break;
+                    case 'audio':
+                    $type=$message['type'];
+                    $originalContentUrl=$message['originalContentUrl'];
+                    $duration=$message['duration'];
+                    if($type!=""){
+                        $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => $type."\n".$originalContentUrl."\n".$duration
+                            ))));
+                    }
+                    break;
             }
             break;
         default:
