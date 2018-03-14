@@ -17,4 +17,24 @@ $m_massage=$message['text'];
 if($m_massage=="安安"){
 $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("文字訊係");
 $bot->replyMessage($replyToken,$msg);
-}
+};
+/*foreach ($client->parseEvents() as $event) {
+    switch ($event['type']) {
+        case 'message':
+            $message = $event['message'];
+            switch ($message['type']) {
+                case 'text':
+                $replyToken=$
+                	$m_message = $message['text'];$source=$event['source'];$id=$source['userId'];
+                    if($m_massage!=""){
+                      $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("安安");
+                      $bot->replyMessage($replyToken,$msg);
+                    }
+                    break;
+            }
+            break;
+        default:
+            error_log("Unsupporeted event type: " . $event['type']);
+            break;
+    }
+};*/
