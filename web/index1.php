@@ -25,13 +25,13 @@ foreach ($client->parseEvents() as $event) {
                     $pictureUrl=$message['pictureUrl'];$res = $bot->getProfile($id);$profile = $res->getJSONDecodedBody();
                     $displayName = $profile['displayName'];
                     date_default_timezone_set('Asia/Taipei');
-                    if($m_message=="安安" && $idtype=="room"){
+                    if($m_message=="安安"){
                         $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => "姓名:".$displayName."\n"."userid: ".$id.$pictureUrl."\n"."roomid:".$roomid."\n"."time: ".date('Y-m-d h:i:sa')
+                                'text' => "姓名:".$displayName."\n"."userid: ".$id.$pictureUrl."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                     }
                     break;
