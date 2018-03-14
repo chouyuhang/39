@@ -13,15 +13,8 @@ $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
-//$res = $bot->getProfile('user-id');
-//if ($res->isSucceeded()) {
- //   $profile = $res->getJSONDecodedBody();
- //   $displayName = $profile['displayName'];
- //   $statusMessage = $profile['statusMessage'];
- //   $pictureUrl = $profile['pictureUrl'];
-//}
-$a="安安";
-if($a=="安安"){
+$m_massage=$message['text'];
+if($m_massage=="安安"){
 $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("文字訊係");
 $bot->replyMessage($replyToken,$msg);
 }
