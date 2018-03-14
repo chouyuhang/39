@@ -20,5 +20,8 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
  //   $statusMessage = $profile['statusMessage'];
  //   $pictureUrl = $profile['pictureUrl'];
 //}
+$a="安安";
+if($a=="安安"){
 $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("文字訊係");
 $bot->replyMessage($replyToken,$msg);
+}
