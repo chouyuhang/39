@@ -200,7 +200,10 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'location',
-                                'location' => $title,$address,$longitude,$latitude
+                                'title' => $title,
+                                'address' => $address,
+                                'latitude' => $latitude,
+                                'longitude' => $longitude
                             ))));
                     }
                     break;  
