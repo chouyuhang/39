@@ -1,5 +1,16 @@
 <?php
 require_once('./LINEBotTiny.php');
+require_once __DIR__ . '/../src/LINEBot.php';
+require_once __DIR__ . '/../src/LINEBot/Response.php';
+require_once __DIR__ . '/../src/LINEBot/Constant/Meta.php';
+require_once __DIR__ . '/../src/LINEBot/HTTPClient.php';
+require_once __DIR__ . '/../src/LINEBot/HTTPClient/Curl.php';
+require_once __DIR__ . '/../src/LINEBot/HTTPClient/CurlHTTPClient.php';
+$channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
+$channelSecret = getenv('LINE_CHANNEL_SECRET');
+$client = new LINEBotTiny($channelAccessToken, $channelSecret);
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
@@ -10,8 +21,9 @@ foreach ($client->parseEvents() as $event) {
             switch ($message['type']) {
                 case 'text':
                 	$m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $id=$source['userId'];
-                    $roomid=$source['roomId']; $groupid=$source['groupId']; $displayName=$message['displayName'];
-                    $pictureUrl=$message['pictureUrl'];
+                    $roomid=$source['roomId']; $groupid=$source['groupId'];
+                    $pictureUrl=$message['pictureUrl'];$res = $bot->getProfile($id);$profile = $res->getJSONDecodedBody();
+                    $displayName = $profile['displayName'];
                     date_default_timezone_set('Asia/Taipei');
                     if($m_message=="安安" && $idtype=="room"){
                         $client->replyMessage(array(
@@ -19,7 +31,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $displayName."userid: ".$id.$pictureUrl."\n"."roomid:".$roomid."\n"."time: ".date('Y-m-d h:i:sa')
+                                'text' => "姓名:".$displayName."\n"."userid: ".$id.$pictureUrl."\n"."roomid:".$roomid."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                     }
                 	else if($m_message=="安安" && $idtype=="group")
@@ -29,7 +41,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => "userid: ".$id."\n"."groupid: ".$groupid."\n"."time: ".date('Y-m-d h:i:sa')
+                                'text' => "姓名:".$displayName."\n"."userid: ".$id."\n"."groupid: ".$groupid."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                 	}
                     else if($m_message=="安安" && $idtype=="user"){
@@ -38,7 +50,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => "userid: ".$id."\n"."time: ".date('Y-m-d h:i:sa')
+                                'text' => "姓名:".$displayName."\n"."userid: ".$id."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                     }
                     else if($m_message=="156"){
@@ -50,7 +62,7 @@ foreach ($client->parseEvents() as $event) {
                                 'altText' => 'Example confirm template',
                                 'template' => array(
                                     'type' => 'confirm',
-                                    'text' => '你156cm嗎?',
+                                    'text' => $displayName.'你156cm嗎?',
                                     'actions' => array(
                                         array(
                                         'type' => 'message',
