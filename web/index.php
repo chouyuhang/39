@@ -199,8 +199,8 @@ foreach ($client->parseEvents() as $event) {
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                             array(
-                                'type' => 'text',
-                                'text' => $title."\n".$address."\n"."經度:".$longitude."\n"."緯度:".$latitude."\n"."userid: ".$id
+                                'type' => 'location',
+                                'location' => $title,$address,$longitude,$latitude
                             ))));
                     }
                     break;  
