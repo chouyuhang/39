@@ -3,6 +3,7 @@ require_once('./LINEBotTiny.php');
 require_once __DIR__ . '/../src/LINEBot.php';
 require_once __DIR__ . '/../src/LINEBot/Response.php';
 require_once __DIR__ . '/../src/LINEBot/Constant/Meta.php';
+require_once __DIR__ . '/../src/LINEBot/MessageBuilder.php';
 require_once __DIR__ . '/../src/LINEBot/HTTPClient.php';
 require_once __DIR__ . '/../src/LINEBot/HTTPClient/Curl.php';
 require_once __DIR__ . '/../src/LINEBot/HTTPClient/CurlHTTPClient.php';
