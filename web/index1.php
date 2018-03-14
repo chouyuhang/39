@@ -2,32 +2,37 @@
 require_once('./LINEBotTiny.php');
 require_once __DIR__ . '/../src/LINEBot.php';
 require_once __DIR__ . '/../src/LINEBot/Response.php';
-require_once __DIR__ . '/../src/LINEBot/MessageBuilder.php';
-require_once __DIR__ . '/../src/LINEBot/Constant/MessageType.php';
 require_once __DIR__ . '/../src/LINEBot/Constant/Meta.php';
 require_once __DIR__ . '/../src/LINEBot/HTTPClient.php';
 require_once __DIR__ . '/../src/LINEBot/HTTPClient/Curl.php';
 require_once __DIR__ . '/../src/LINEBot/HTTPClient/CurlHTTPClient.php';
-require_once __DIR__ . '/../src/LINEBot/MessageBuilder/TextMessageBuilder.php';
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
-/*$replyToken=$event['replyToken'];
-$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("hello");
-$bot->replyMessage($replyToken,$msg);*/
+$channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
+$channelSecret = getenv('LINE_CHANNEL_SECRET');
+$client = new LINEBotTiny($channelAccessToken, $channelSecret);
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
                 case 'text':
-                    $replyToken=$event['replyToken'];
-                	$m_message = $message['text'];
-                    if($m_massage!=""){
-                      $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("安安");
-                      $bot->replyMessage($replyToken,$msg);
+                	$m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $id=$source['userId'];
+                    $roomid=$source['roomId']; $groupid=$source['groupId'];
+                    $pictureUrl=$message['pictureUrl'];$res = $bot->getProfile($id);$profile = $res->getJSONDecodedBody();
+                    $displayName = $profile['displayName'];
+                    date_default_timezone_set('Asia/Taipei');
+                    if($m_message=="安安" && $idtype=="room"){
+                        $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => "姓名:".$displayName."\n"."userid: ".$id.$pictureUrl."\n"."roomid:".$roomid."\n"."time: ".date('Y-m-d h:i:sa')
+                            ))));
                     }
                     break;
             }
