@@ -233,8 +233,9 @@ foreach ($client->parseEvents() as $event) {
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                             array(
-                                'type' => 'text',
-                                'text' => $type.$originalContentUrl.$previewImageUrl
+                                'type' => 'image',
+                                'originalContentUrl' => $originalContentUrl,
+                                'previewImageUrl' => $previewImageUrl
                             ))));
                     }
                     break;
