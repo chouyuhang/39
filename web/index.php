@@ -26,7 +26,7 @@ foreach ($client->parseEvents() as $event) {
                 	$m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $id=$source['userId'];
                     $roomid=$source['roomId']; $groupid=$source['groupId'];
                     $pictureUrl=$message['pictureUrl'];$res = $bot->getProfile($id);$profile = $res->getJSONDecodedBody();
-                    $displayName = $profile['displayName'];
+                    $displayName = $profile['displayName'];$pictureUrl=$profile['pictureUrl'];$statusMessage=$profile['statusMessage'];
                     date_default_timezone_set('Asia/Taipei');
                     if($m_message=="安安" && $idtype=="room"){
                         $client->replyMessage(array(
@@ -34,7 +34,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => "姓名:".$displayName."\n"."userid: ".$id.$pictureUrl."\n"."roomid:".$roomid."\n"."time: ".date('Y-m-d h:i:sa')
+                                'text' => $statusMessage."\n".$pictureUrl."\n"."姓名:".$displayName."\n"."userid: ".$id.$pictureUrl."\n"."roomid:".$roomid."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                     }
                 	else if($m_message=="安安" && $idtype=="group")
@@ -44,7 +44,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => "姓名:".$displayName."\n"."userid: ".$id."\n"."groupid: ".$groupid."\n"."time: ".date('Y-m-d h:i:sa')
+                                'text' => $statusMessage."\n".$pictureUrl."\n"."姓名:".$displayName."\n"."userid: ".$id."\n"."groupid: ".$groupid."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                 	}
                     else if($m_message=="安安" && $idtype=="user"){
@@ -53,7 +53,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => "姓名:".$displayName."\n"."userid: ".$id."\n"."time: ".date('Y-m-d h:i:sa')
+                                'text' => $statusMessage."\n".$pictureUrl."\n"."姓名:".$displayName."\n"."userid: ".$id."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                     }
                     else if($m_message=="156"){
