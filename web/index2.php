@@ -32,10 +32,10 @@ foreach ($client->parseEvents() as $event) {
                         $bot->replyMessage($replyToken,$msg);
                     }*/
                     $str = "Hello World";
-                    $file = fopen("abc.txt","a+"); //開啟檔案
-                    if($fp){
-                       fwrite($file,$str);
-                       fclose($file);
+                    $fp = fopen("abc.txt","a+"); //開啟檔案
+                    if($fp || $m_message!=""){
+                       fwrite($fp,$str);
+                       fclose($fp);
                     }
                     break;
             }
