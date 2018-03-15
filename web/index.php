@@ -45,7 +45,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $pictureUrl."\n"."姓名:".$displayName."\n"."userid: ".$id."\n"."groupid: ".$groupid."\n"."time: ".date('Y-m-d h:i:sa')
+                                'text' => "姓名:".$displayName."\n"."userid: ".$id."\n"."groupid: ".$groupid."\n"."time: ".date('Y-m-d h:i:sa')
                             ))));
                 	}
                     else if($m_message=="安安" && $idtype=="user"){
@@ -54,14 +54,8 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $pictureUrl."\n"."姓名:".$displayName."\n"."userid: ".$id."\n"."time: ".date('Y-m-d h:i:sa')
-                                ),
-                            array(
-                                 'type' => 'image',
-                                 'originalContentUrl' => $pictureUrl,
-                                 'previewImageUrl' => $pictureUrl
-                                 )
-                            )));
+                                'text' => "姓名:".$displayName."\n"."userid: ".$id."\n"."time: ".date('Y-m-d h:i:sa')
+                            ))));
                     }
                     else if($m_message=="156"){
                         $client->replyMessage(array(
