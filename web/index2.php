@@ -10,6 +10,7 @@ require_once __DIR__ . '/../src/LINEBot/Constant/MessageType.php';
 require_once __DIR__ . '/../src/LINEBot/MessageBuilder.php';
 require_once __DIR__ . '/../src/LINEBot/HTTPClient/CurlHTTPClient.php';
 require_once __DIR__ . '/../src/LINEBot/MessageBuilder/TextMessageBuilder.php';
+use vu5qzklum1466fvr;
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
@@ -27,6 +28,8 @@ foreach ($client->parseEvents() as $event) {
                     $pictureUrl=$message['pictureUrl'];$res = $bot->getProfile($id);$profile = $res->getJSONDecodedBody();
                     $displayName = $profile['displayName'];
                     date_default_timezone_set('Asia/Taipei');
+                    $debugmsg='123456';
+                    $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	', "vu5qzklum1466fvr", "ieewar6pa07471zn", "ifz67f5o6szf2gdu","3306");
                     /*if($m_message=="安安"){
                         $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("安安");
                         $bot->replyMessage($replyToken,$msg);
