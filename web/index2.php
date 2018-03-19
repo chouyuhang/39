@@ -38,7 +38,7 @@ foreach ($client->parseEvents() as $event) {
 		    }*/
                     if($m_message=="安安"){
 			    $str = "Hello World";
-			    $file = fopen("/web/abc.txt","a+");
+			    $file = fopen("./web/abc.txt","a+");
 			    fwrite($file,$str);
 			    fclose($file);
                        /*$client->replyMessage(array(
