@@ -30,16 +30,22 @@ foreach ($client->parseEvents() as $event) {
                     date_default_timezone_set('Asia/Taipei');
                     $debugmsg='123456';
                     $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-                    /*if($m_message=="安安"){
-                        $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("安安");
-                        $bot->replyMessage($replyToken,$msg);
-                    }*/
-                    $str = "Hello World";
-                    $fp = fopen("abc.txt","a+"); //開啟檔案
-                    if($fp || $m_message!=""){
-                       fwrite($fp,$str);
-                       fclose($fp);
+                    $cool=mysqli_query($mysqli,"select Q from test");
+			        if(mysqli_connect_errno()){ 
+                        $debugmsg='資料庫連線失敗';
                     }
+                    else{
+					    $mysqli->close();
+				    }
+                    if($m_message=="安安"){
+                       $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+				                'text' => $cool
+                            )	
+                        )));			
                     break;
             }
             break;
