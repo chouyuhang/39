@@ -41,14 +41,14 @@ foreach ($client->parseEvents() as $event) {
 			    $file = fopen("/web/abc.txt","a+");
 			    fwrite($file,$str);
 			    fclose($file);
-                       $client->replyMessage(array(
+                       /*$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                             array(
                                 'type' => 'text',
 				'text' => $str
                             )	
-                        )));
+                        )));*/
 		    }
                     break;
             }
