@@ -9,7 +9,7 @@ require_once __DIR__ . '/../src/LINEBot/Constant/MessageType.php';
 require_once __DIR__ . '/../src/LINEBot/MessageBuilder.php';
 require_once __DIR__ . '/../src/LINEBot/HTTPClient/CurlHTTPClient.php';
 require_once __DIR__ . '/../src/LINEBot/MessageBuilder/TextMessageBuilder.php';
-//USE oqz0qx1hdl6jbtca;
+USE oqz0qx1hdl6jbtca;
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
@@ -27,7 +27,7 @@ foreach ($client->parseEvents() as $event) {
                     $pictureUrl=$message['pictureUrl'];$res = $bot->getProfile($id);$profile = $res->getJSONDecodedBody();
                     $displayName = $profile['displayName'];
                     date_default_timezone_set('Asia/Taipei');
-                    /*$debugmsg='123456';
+                    $debugmsg='123456';
                     $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
                     $cool=mysqli_query($mysqli,"select Q from test");
 	            if(mysqli_connect_errno()){ 
@@ -35,20 +35,16 @@ foreach ($client->parseEvents() as $event) {
                     }
                     else{
 			 $mysqli->close();
-		    }*/
+		    }
                     if($m_message=="安安"){
-			    $str = "Hello World";
-			    $file = fopen("./web/abc.txt","a+");
-			    fwrite($file,$str);
-			    fclose($file);
-                       /*$client->replyMessage(array(
+                       $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                             array(
                                 'type' => 'text',
-				'text' => $str
+				'text' => $cool
                             )	
-                        )));*/
+                        )));
 		    }
                     break;
             }
