@@ -45,7 +45,7 @@ foreach ($client->parseEvents() as $event) {
                                 'type' => 'text',
 				'text' => $cool
                             )	
-                        )));			
+                        )))};			
                     break;
             }
             break;
