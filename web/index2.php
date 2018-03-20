@@ -9,7 +9,7 @@ require_once __DIR__ . '/../src/LINEBot/Constant/MessageType.php';
 require_once __DIR__ . '/../src/LINEBot/MessageBuilder.php';
 require_once __DIR__ . '/../src/LINEBot/HTTPClient/CurlHTTPClient.php';
 require_once __DIR__ . '/../src/LINEBot/MessageBuilder/TextMessageBuilder.php';
-USE oqz0qx1hdl6jbtca;
+//USE oqz0qx1hdl6jbtca;
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
