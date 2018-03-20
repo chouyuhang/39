@@ -12,6 +12,9 @@ require_once __DIR__ . '/../src/LINEBot/MessageBuilder/TextMessageBuilder.php';
 //USE oqz0qx1hdl6jbtca;
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
+
+$header=["Content-Type: application/json", "Authorization: Bearer {" . $channelAccessToken . "}"];
+
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
