@@ -105,7 +105,7 @@ class LINEBotTiny
             ),
         ));
 
-        $response = {"message":"Authorization header required. Must follow the scheme, 'Authorization: Bearer <ACCESS TOKEN>'"};
+        $response = file_get_contents('https://api.line.me/v2/bot/message/reply', false, $context);
         if (strpos($http_response_header[0], '200') === false) {
             #http_response_code(500);
             error_log("Request failed: " . $response);
