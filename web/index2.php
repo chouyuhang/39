@@ -29,7 +29,7 @@ foreach ($client->parseEvents() as $event) {
                     date_default_timezone_set('Asia/Taipei');
                     $debugmsg='123456';
                     $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-                    $cool=mysqli_query($mysqli,"select cool from mysql");
+                    $cool=select cool from mysql;
 	            if(mysqli_connect_errno()){ 
                         $debugmsg='資料庫連線失敗';
                     }
