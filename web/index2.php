@@ -30,13 +30,12 @@ foreach ($client->parseEvents() as $event) {
                     $pictureUrl=$message['pictureUrl'];$res = $bot->getProfile($id);$profile = $res->getJSONDecodedBody();
                     $displayName = $profile['displayName'];
                     date_default_timezone_set('Asia/Taipei');
-                    $debugmsg='123456';
                     $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			$sql = "select cool from mysql";
+			$sql = "select mysqlcol from mysql";
 			$result = $mysqli->query($sql);
  
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  				$cool = $row['cool'] ;
+  				$cool = $row['mysqlcol'] ;
  			 }
 	            if(mysqli_connect_errno()){ 
                         $debugmsg='資料庫連線失敗';
@@ -45,7 +44,7 @@ foreach ($client->parseEvents() as $event) {
 			 $mysqli->close();
 		    }
                     if($m_message=="安安"){
-                        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool. "\n" . $m_message);
+                        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool);
 			$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 		    }
                     break;
