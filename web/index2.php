@@ -35,7 +35,7 @@ foreach ($client->parseEvents() as $event) {
 			$sql = "select cool from mysql where a=456";
 			$result = $mysqli->query($sql);
  
-			while($row = $result->fetch_array()) {
+			while($row = $result->fetch_all()) {
   				$a = $row['cool'] ;
  			 }
 	            if(mysqli_connect_errno()){ 
