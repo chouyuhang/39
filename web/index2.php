@@ -32,7 +32,12 @@ foreach ($client->parseEvents() as $event) {
                     date_default_timezone_set('Asia/Taipei');
                     $debugmsg='123456';
                     $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-                    $cool=mysqli_query($mysqli,"select cool from mysql where cool='你好'");
+			$sql = "select cool from mysql where a=456";
+			$result = $mysqli->query($sql);
+ 
+			while($row = $result->fetch_array()) {
+  				$a = $row['cool'] ;
+ 			 }
 	            if(mysqli_connect_errno()){ 
                         $debugmsg='資料庫連線失敗';
                     }
@@ -40,14 +45,8 @@ foreach ($client->parseEvents() as $event) {
 			 $mysqli->close();
 		    }
                     if($m_message=="安安"){
-                       $client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-				'text' => $cool
-                            )	
-                        )));
+                        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($a. "\n" . $m_message);
+			$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 		    }
                     break;
             }
