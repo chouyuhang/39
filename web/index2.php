@@ -34,7 +34,7 @@ foreach ($client->parseEvents() as $event) {
 			
 			$insert="INSERT INTO mysql (cool,mysqlcol) VALUES ($m_message,$m_message)";
 			$sql = "select * from mysql";
-			$result = $mysqli->query($sql);
+			$result = $mysqli->query($insert);
  
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
   				$cool = $row['cool'] ;
