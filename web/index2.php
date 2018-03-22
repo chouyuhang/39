@@ -32,7 +32,8 @@ foreach ($client->parseEvents() as $event) {
                     date_default_timezone_set('Asia/Taipei');
                     $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			
-		    //$insert="INSERT INTO mysql (cool,mysqlcol) VALUES ('$m_message','$m_message')";
+		    $sql="INSERT INTO mysql (cool,mysqlcol) VALUES ('$m_message','$m_message')";
+		    $result = $mysqli->query($sql);
 		    $sql = "select * from mysql";
 	            $result = $mysqli->query($sql);
  
@@ -47,10 +48,10 @@ foreach ($client->parseEvents() as $event) {
 			 $mysqli->close();
 		    }
                     if($m_message!=""){
-			$insert="INSERT INTO mysql (cool,mysqlcol) VALUES ('$m_message','$m_message')";
+			/*$insert="INSERT INTO mysql (cool,mysqlcol) VALUES ('$m_message','$m_message')";
 			$a = $mysqli->query($insert);
-			$mysqli->close();
-                        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($insert);
+			$mysqli->close();*/
+                        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool." ".$mysqlcol);
 			$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 		    }
                     break;
