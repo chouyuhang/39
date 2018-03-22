@@ -48,7 +48,7 @@ foreach ($client->parseEvents() as $event) {
 		    }
                     if($m_message!=""){
 			$insert="INSERT INTO mysql (cool,mysqlcol) VALUES ('$m_message','$m_message')";
-			$a = $mysqli->query($insert)or die ("無法新增".mysql_error());
+			$a = $mysqli->query($insert);
 			$mysqli->close();
                         $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($insert);
 			$response = $bot->replyMessage($replyToken, $textMessageBuilder);
