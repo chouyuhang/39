@@ -68,6 +68,19 @@ foreach ($client->parseEvents() as $event) {
 			$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 		    }
                     break;
+		    case 'location':
+                    $source=$event['source'];
+                    $idtype = $source['type']; 
+                    $id=$source['userId'];
+                    $address=$message['address'];
+                    $title=$message['title'];
+                    $latitude=$message['latitude'];
+                    $longitude=$message['longitude'];
+                    if($address!=""){
+                        $msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($title, $address, $latitude, $longitude);
+			$bot->replyMessage($replyToken,$msg);
+                    }
+                    break;  
             }
             break;
         default:
