@@ -24,7 +24,7 @@ foreach ($client->parseEvents() as $event) {
             switch ($message['type']) {
                 case 'text':
                     $replyToken=$event['replyToken'];
-                	$m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $id=$source['userId'];
+                	$m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $userid=$source['userId'];
                     $roomid=$source['roomId']; $groupid=$source['groupId'];
                     $pictureUrl=$message['pictureUrl'];$res = $bot->getProfile($id);$profile = $res->getJSONDecodedBody();
                     $displayName = $profile['displayName'];
@@ -32,14 +32,14 @@ foreach ($client->parseEvents() as $event) {
 		    //global $mysqli;
                     $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			
-		    $sql="INSERT INTO mysql (cool,mysqlcol) VALUES ('$m_message','$m_message')";
+		    $sql="INSERT INTO mysql (name,userid) VALUES ('$displayName','$userid')";
 		    $result = $mysqli->query($sql);
 		    $sql = "select * from mysql";
 	            $result = $mysqli->query($sql);
  
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  				$cool = $row['cool'] ;
-				$mysqlcol=$row['mysqlcol'];
+  				$name = $row['name'] ;
+				$myid=$row['userid'];
  			 }
 	            if(mysqli_connect_errno()){ 
                         $debugmsg='資料庫連線失敗';
@@ -51,7 +51,7 @@ foreach ($client->parseEvents() as $event) {
 			/*$insert="INSERT INTO mysql (cool,mysqlcol) VALUES ('$m_message','$m_message')";
 			$a = $mysqli->query($insert);
 			$mysqli->close();*/
-                        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool." ".$mysqlcol." "."123");
+                        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name." ".$myid." "."123");
 			$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 		    }
                     break;
