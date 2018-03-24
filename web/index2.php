@@ -79,7 +79,7 @@ foreach ($client->parseEvents() as $event) {
                     $latitude=$message['latitude'];
                     $longitude=$message['longitude'];
                     if($address!=""){
-                        $msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($type,$address,$latitude,$longitude);
+                        $msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($title,$address,$latitude,$longitude);
 			$bot->replyMessage($replyToken,$msg);
                     }
                     break;  
