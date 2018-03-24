@@ -51,7 +51,7 @@ foreach ($client->parseEvents() as $event) {
 			/*$insert="INSERT INTO mysql (cool,mysqlcol) VALUES ('$m_message','$m_message')";
 			$a = $mysqli->query($insert);
 			$mysqli->close();*/
-                        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool." ".$mysqlcol);
+                        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool." ".$mysqlcol." "."123");
 			$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 		    }
                     break;
