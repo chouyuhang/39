@@ -79,7 +79,7 @@ foreach ($client->parseEvents() as $event) {
                     $latitude=$message['latitude'];
                     $longitude=$message['longitude'];
                     if($address!=""){
-			mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
                         $sql="UPDATE mysql SET location='address',longitude='$longitude',latitude='$latitude' where name='$displayname';";
 			$result = $mysqli->query($sql);
 			//$msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($title,$address,$latitude,$longitude);
