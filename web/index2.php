@@ -31,9 +31,9 @@ foreach ($client->parseEvents() as $event) {
                     date_default_timezone_set('Asia/Taipei');
 		    $time=date("Y-m-d H:i:s");
 		    //global $mysqli;
-                    /*$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+                    $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			
-		    $sql="INSERT INTO mysql (name,userid) VALUES ('$displayName','$userid')";
+		    /*$sql="INSERT INTO mysql (name,userid) VALUES ('$displayName','$userid')";
 		    $result = $mysqli->query($sql);
 		    $sql = "select * from mysql";
 	            $result = $mysqli->query($sql);
