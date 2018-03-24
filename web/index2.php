@@ -29,8 +29,9 @@ foreach ($client->parseEvents() as $event) {
                     $pictureUrl=$message['pictureUrl'];$res = $bot->getProfile($id);$profile = $res->getJSONDecodedBody();
                     $displayName = $profile['displayName'];
                     date_default_timezone_set('Asia/Taipei');
+		    $time=date("Y-m-d H:i:s");
 		    //global $mysqli;
-                    $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+                    /*$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			
 		    $sql="INSERT INTO mysql (name,userid) VALUES ('$displayName','$userid')";
 		    $result = $mysqli->query($sql);
@@ -46,12 +47,26 @@ foreach ($client->parseEvents() as $event) {
                     }
                     else{
 			 $mysqli->close();
-		    }
+		    }*/
                     if($m_message!=""){
-			/*$insert="INSERT INTO mysql (cool,mysqlcol) VALUES ('$m_message','$m_message')";
+			$insert="INSERT INTO mysql (name,userid,worktime,worktype) VALUES ('$displayName','$userid','$time','進')";
 			$a = $mysqli->query($insert);
-			$mysqli->close();*/
-                        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name." ".$myid." "."123");
+			$result = $mysqli->query($sql);
+		    	$sql = "select * from mysql";
+	            	$result = $mysqli->query($sql);
+ 		    	while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  		        	$name = $row['name'] ;
+				$myid=$row['userid'];
+				$worktime=$row['worktime'];
+				$worktype=$row['worktype'];
+ 		   	 }
+	            	if(mysqli_connect_errno()){ 
+                        	$debugmsg='資料庫連線失敗';
+                    	}
+                    	else{
+			 	$mysqli->close();
+		    	}
+                        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." ".$name." ".$myid." ".$worktime."\n".$worktype);
 			$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 		    }
                     break;
