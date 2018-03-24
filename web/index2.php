@@ -70,7 +70,9 @@ foreach ($client->parseEvents() as $event) {
 		    }
                     break;
 		    case 'location':
-			$replyToken=$event['replyToken'];
+		    $replyToken=$event['replyToken'];
+		    $res = $bot->getProfile($userid);$profile = $res->getJSONDecodedBody();
+                    $displayName = $profile['displayName'];
                     $source=$event['source'];
                     $type = $source['type']; 
                     $id=$source['userId'];
