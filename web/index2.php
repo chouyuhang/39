@@ -24,7 +24,7 @@ foreach ($client->parseEvents() as $event) {
                     $replyToken=$event['replyToken'];
                 	$m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $userid=$source['userId'];
                     $roomid=$source['roomId']; $groupid=$source['groupId'];
-                    $pictureUrl=$message['pictureUrl'];$res = $bot->getProfile($id);$profile = $res->getJSONDecodedBody();
+                    $res = $bot->getProfile($userid);$profile = $res->getJSONDecodedBody();
                     $displayName = $profile['displayName'];
                     date_default_timezone_set('Asia/Taipei');
 		    $time=date("Y-m-d H:i:s");
