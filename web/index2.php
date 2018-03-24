@@ -78,7 +78,7 @@ foreach ($client->parseEvents() as $event) {
                     $latitude=$message['latitude'];
                     $longitude=$message['longitude'];
                     if($address!=""){
-                        $msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($title, $address, $latitude, $longitude);
+                        $msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder("位址名稱", "地址", 緯度, 經度);
 			$bot->replyMessage($replyToken,$msg);
                     }
                     break;  
