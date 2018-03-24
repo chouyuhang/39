@@ -70,6 +70,7 @@ foreach ($client->parseEvents() as $event) {
 		    }
                     break;
 		    case 'location':
+			$replyToken=$event['replyToken'];
                     $source=$event['source'];
                     $idtype = $source['type']; 
                     $id=$source['userId'];
@@ -78,7 +79,7 @@ foreach ($client->parseEvents() as $event) {
                     $latitude=$message['latitude'];
                     $longitude=$message['longitude'];
                     if($address!=""){
-                        $msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder("位址名稱", "地址", $longitude, $latitude);
+                        $msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($title, $address, $longitude, $latitude);
 			$bot->replyMessage($replyToken,$msg);
                     }
                     break;  
