@@ -7,6 +7,7 @@ require_once __DIR__ . '/../src/LINEBot/HTTPClient.php';
 require_once __DIR__ . '/../src/LINEBot/HTTPClient/Curl.php';
 require_once __DIR__ . '/../src/LINEBot/Constant/MessageType.php';
 require_once __DIR__ . '/../src/LINEBot/MessageBuilder.php';
+require_once __DIR__ . '/../src/LINEBot/MessageBuilder/LocationMessageBuilder.php';
 require_once __DIR__ . '/../src/LINEBot/HTTPClient/CurlHTTPClient.php';
 require_once __DIR__ . '/../src/LINEBot/MessageBuilder/TextMessageBuilder.php';
 //USE oqz0qx1hdl6jbtca;
