@@ -72,14 +72,14 @@ foreach ($client->parseEvents() as $event) {
 		    case 'location':
 			$replyToken=$event['replyToken'];
                     $source=$event['source'];
-                    $idtype = $source['type']; 
+                    $type = $source['type']; 
                     $id=$source['userId'];
                     $address=$message['address'];
                     $title=$message['title'];
                     $latitude=$message['latitude'];
                     $longitude=$message['longitude'];
                     if($address!=""){
-                        $msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($title, $address, $longitude, $latitude);
+                        $msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($type, $address, $longitude, $latitude);
 			$bot->replyMessage($replyToken,$msg);
                     }
                     break;  
