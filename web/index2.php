@@ -12,8 +12,6 @@ require_once __DIR__ . '/../src/LINEBot/MessageBuilder/TextMessageBuilder.php';
 //USE oqz0qx1hdl6jbtca;
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
-
-$header=["Content-Type: application/json", "Authorization: Bearer {" . $channelAccessToken . "}"];
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
@@ -50,7 +48,7 @@ foreach ($client->parseEvents() as $event) {
 		    }*/
                     if($m_message!=""){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			$insert="INSERT INTO mysql (name,userid,worktime,worktype) VALUES ('$displayName','$userid','$time','進')";
+			$sql="INSERT INTO mysql (name,userid,worktime,worktype) VALUES ('$displayName','$userid','$time','進')";
 			$result = $mysqli->query($sql);
 		    	$sql = "select * from mysql";
 	            	$result = $mysqli->query($sql);
