@@ -50,7 +50,6 @@ foreach ($client->parseEvents() as $event) {
 		    }*/
                     if($m_message!=""){
 			$insert="INSERT INTO mysql (name,userid,worktime,worktype) VALUES ('$displayName','$userid','$time','進')";
-			$a = $mysqli->query($insert);
 			$result = $mysqli->query($sql);
 		    	$sql = "select * from mysql";
 	            	$result = $mysqli->query($sql);
