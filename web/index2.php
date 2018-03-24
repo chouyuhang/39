@@ -64,7 +64,7 @@ foreach ($client->parseEvents() as $event) {
                     	else{
 			 	$mysqli->close();
 		    	}
-                        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." ".$name." ".$myid." ".$worktime."\n".$worktype);
+                        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name." ".$myid." ".$worktime."\n".$worktype);
 			$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 		    }
                     break;
