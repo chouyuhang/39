@@ -29,7 +29,7 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
-                case 'text':
+                case 'location':
                     $replyToken=$event['replyToken'];
                     $m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $userid=$source['userId'];
                     $roomid=$source['roomId']; $groupid=$source['groupId'];
@@ -38,33 +38,50 @@ foreach ($client->parseEvents() as $event) {
                     $longitude=$message['longitude']; $latitude=$message['latitude']; 
                     date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");
                     //if($address!="" || $longitude=="121.605876" || $latitude=="25.07087"){
-		    if($m_message!=""){
-			/*$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+		    if($address!=""){
+			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql="INSERT INTO mysql (name,userid,worktime,location,longitude,latitude) VALUES ('$displayName','$userid','$time','$address','$longitude','$latitude')";
 			$result = $mysqli->query($sql);
-		    	$sql = "select * from mysql";
-	            	$result = $mysqli->query($sql);
- 		    	while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  		        	$name = $row['name']; $myid=$row['userid'];
-				$worktime=$row['worktime']; $worktype=$row['worktype'];
-				$address=$row['location']; $longitude=$row['longitude'];
-				$latitude=$row['latitude'];
- 		   	}
-	            	if(mysqli_connect_errno()){ 
-                        	$debugmsg='資料庫連線失敗';
-                    	}
-                    	else{
-			 	$mysqli->close();
-		    	}*/
-			$actions = array(
+			$mysqli->close();
+		    }else if($m_message=="進"){
+			$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			$sql = "UPDATE mysql SET worktype='進' where name='$displayName' and worktype='';";
+			$result = $mysqli->query($sql);
+		    }else if($m_message=="出"){
+			$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			$sql = "UPDATE mysql SET worktype='出' where name='$displayName' and worktype='';";
+			$result = $mysqli->query($sql);
+		    }
+			/*$actions = array(
   			new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("是", "ans=Y"),
   			new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("否", "ans=N")
 			);
 			$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("問題", $actions);
 			$msg = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
-			$bot->replyMessage($replyToken,$msg);
+			$bot->replyMessage($replyToken,$msg);*/
                       	//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name." ".$myid." ".$worktime."\n".$worktype."\n".$address."\n".$longitude." ".$latitude);
 			//$response = $bot->replyMessage($replyToken, $textMessageBuilder);
+			$client->replyMessage(array(
+  			'replyToken' => $event['replyToken'],
+    			'messages' => array(
+            		array(
+                	'type' => 'template', // 訊息類型 (模板)
+                	'altText' => 'Example confirm template', // 替代文字
+                	'template' => array(
+                    	'type' => 'confirm', // 類型 (確認)
+                    	'text' => '你現在是進還是出?', // 文字
+                    	'actions' => array(
+                        	array(
+                            	'type' => 'message', // 類型 (訊息)
+                            	'label' => '進', // 標籤 1
+                            	'text' => '出'// 用戶發送文字 1
+                        	),
+                        	array(
+                            	'type' => 'message', // 類型 (訊息)
+                            	'label' => '進', // 標籤 2
+                            	'text' => '出' // 用戶發送文字 2
+                        )
+                    ))))));
 		    }
                     break;
             }
