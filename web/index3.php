@@ -27,19 +27,19 @@ foreach ($client->parseEvents() as $event) {
                     $roomid=$source['roomId']; $groupid=$source['groupId'];
                     $res = $bot->getProfile($userid); $profile = $res->getJSONDecodedBody();$displayName = $profile['displayName'];
 		    $address=$message['address']; $title=$message['title'];
-                    $latitude=$message['latitude']; $longitude=$message['longitude'];
+                    $longitude=$message['longitude']; $latitude=$message['latitude']; 
                     date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");
                     if($address!="" || $longitude=="121.605876" || $latitude=="25.07087"){
 			     $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			     $sql="INSERT INTO mysql (name,userid,worktime,worktype) VALUES ('$displayName','$userid','$time','進')";
+			     $sql="INSERT INTO mysql (name,userid,worktime,worktype,location,longitude,latitude) VALUES ('$displayName','$userid','$time','進','$address','$longitude','$latitude')";
 			     $result = $mysqli->query($sql);
 		    	     $sql = "select * from mysql";
 	            	     $result = $mysqli->query($sql);
  		    	       while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  		        	 $name = $row['name'] ;
-				 $myid=$row['userid'];
-				 $worktime=$row['worktime'];
-				 $worktype=$row['worktype'];
+  		        	 $name = $row['name']; $myid=$row['userid'];
+				 $worktime=$row['worktime']; $worktype=$row['worktype'];
+				 $address=$row['location']; $longitude=$row['longitude'];
+				 $latitude=$row['latitude'];
  		   	        }
 	            	        if(mysqli_connect_errno()){ 
                         		$debugmsg='資料庫連線失敗';
@@ -47,7 +47,7 @@ foreach ($client->parseEvents() as $event) {
                     	  	else{
 			 	        $mysqli->close();
 		    	        }
-                      			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name." ".$myid." ".$worktime."\n".$worktype);
+                      			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name." ".$myid." ".$worktime."\n".$worktype."\n".$address."\n".$longitude." ".$latitude);
 			                $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 		                }
                     break;
