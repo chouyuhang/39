@@ -56,11 +56,11 @@ foreach ($client->parseEvents() as $event) {
                         	array(
                             	'type' => 'message', // 類型 (訊息)
                             	'label' => '進', // 標籤 1
-                            	'text' => '出'// 用戶發送文字 1
+                            	'text' => '進'// 用戶發送文字 1
                         	),
                         	array(
                             	'type' => 'message', // 類型 (訊息)
-                            	'label' => '進', // 標籤 2
+                            	'label' => '出', // 標籤 2
                             	'text' => '出' // 用戶發送文字 2
                         	)
                     	))))));
