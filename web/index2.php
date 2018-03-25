@@ -71,11 +71,11 @@ foreach ($client->parseEvents() as $event) {
                     break;
 		    case 'location':
 		    $replyToken=$event['replyToken'];
-		    $res = $bot->getProfile($userid);$profile = $res->getJSONDecodedBody();
-                    $displayName = $profile['displayName'];
                     $source=$event['source'];
                     $type = $source['type']; 
-                    $id=$source['userId'];
+                    $userid=$source['userId'];
+			$res = $bot->getProfile($userid);$profile = $res->getJSONDecodedBody();
+                    $displayName = $profile['displayName'];
                     $address=$message['address'];
                     $title=$message['title'];
                     $latitude=$message['latitude'];
