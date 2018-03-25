@@ -82,8 +82,6 @@ foreach ($client->parseEvents() as $event) {
 			$bot->replyMessage($replyToken,$msg);*/
                       	//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name." ".$myid." ".$worktime."\n".$worktype."\n".$address."\n".$longitude." ".$latitude);
 			//$response = $bot->replyMessage($replyToken, $textMessageBuilder);
-			
-		    	}
                     break;
             }
             break;
