@@ -43,24 +43,6 @@ foreach ($client->parseEvents() as $event) {
 			$sql="INSERT INTO mysql (name,userid,worktime,location,longitude,latitude) VALUES ('$displayName','$userid','$time','$address','$longitude','$latitude')";
 			$result = $mysqli->query($sql);
 			$mysqli->close();
-		    }else if($m_message=="進"){
-			$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-			$sql = "UPDATE mysql SET worktype='進' where name='$displayName' and worktype='';";
-			$result = $mysqli->query($sql);
-		    }else if($m_message=="出"){
-			$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-			$sql = "UPDATE mysql SET worktype='出' where name='$displayName' and worktype='';";
-			$result = $mysqli->query($sql);
-		    }
-			/*$actions = array(
-  			new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("是", "ans=Y"),
-  			new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("否", "ans=N")
-			);
-			$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("問題", $actions);
-			$msg = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
-			$bot->replyMessage($replyToken,$msg);*/
-                      	//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name." ".$myid." ".$worktime."\n".$worktype."\n".$address."\n".$longitude." ".$latitude);
-			//$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 			$client->replyMessage(array(
   			'replyToken' => $event['replyToken'],
     			'messages' => array(
@@ -80,9 +62,28 @@ foreach ($client->parseEvents() as $event) {
                             	'type' => 'message', // 類型 (訊息)
                             	'label' => '進', // 標籤 2
                             	'text' => '出' // 用戶發送文字 2
-                        )
-                    ))))));
+                        	)
+                    	))))));
+		    }else if($m_message=="進"){
+			$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			$sql = "UPDATE mysql SET worktype='進' where name='$displayName' and worktype='';";
+			$result = $mysqli->query($sql);
+		    }else if($m_message=="出"){
+			$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			$sql = "UPDATE mysql SET worktype='出' where name='$displayName' and worktype='';";
+			$result = $mysqli->query($sql);
 		    }
+			/*$actions = array(
+  			new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("是", "ans=Y"),
+  			new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("否", "ans=N")
+			);
+			$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("問題", $actions);
+			$msg = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
+			$bot->replyMessage($replyToken,$msg);*/
+                      	//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name." ".$myid." ".$worktime."\n".$worktype."\n".$address."\n".$longitude." ".$latitude);
+			//$response = $bot->replyMessage($replyToken, $textMessageBuilder);
+			
+		    	}
                     break;
             }
             break;
