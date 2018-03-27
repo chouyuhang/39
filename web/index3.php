@@ -64,7 +64,17 @@ foreach ($client->parseEvents() as $event) {
                             	'text' => '出' // 用戶發送文字 2
                         	)
                     	))))));
-		    }else if($m_message=="進"){
+		    }
+			break;
+		case 'text':
+		    $replyToken=$event['replyToken'];
+                    $m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $userid=$source['userId'];
+                    $roomid=$source['roomId']; $groupid=$source['groupId'];
+                    $res = $bot->getProfile($userid); $profile = $res->getJSONDecodedBody();$displayName = $profile['displayName'];
+		    $address=$message['address']; $title=$message['title'];
+                    $longitude=$message['longitude']; $latitude=$message['latitude']; 
+                    date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");
+		    if($m_message=="進"){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql = "UPDATE mysql SET worktype='進' where name='$displayName' and worktype='';";
 			$result = $mysqli->query($sql);
