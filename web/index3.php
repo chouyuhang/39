@@ -48,7 +48,7 @@ foreach ($client->parseEvents() as $event) {
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
   				$number = $row['number'] ;
  			 }
-			$number+=1;
+			$number=$number+1;
 			$mysqli->close();
 			$client->replyMessage(array(
   			'replyToken' => $event['replyToken'],
