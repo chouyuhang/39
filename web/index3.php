@@ -41,14 +41,14 @@ foreach ($client->parseEvents() as $event) {
                     //if($address!="" || $longitude=="121.605876" || $latitude=="25.07087"){
 		    if($address!=""){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			$sql="INSERT INTO mysql (name,userid,worktime,location,longitude,latitude) VALUES ('$displayName','$userid','$time','$address','$longitude','$latitude')";
-			$result = $mysqli->query($sql);
 			$sql="SELECT number from mysql";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
   				$number = $row['number'] ;
  			 }
 			$number=$number+1;
+			$sql="INSERT INTO mysql (number,name,userid,worktime,location,longitude,latitude) VALUES ('$number','$displayName','$userid','$time','$address','$longitude','$latitude')";
+			$result = $mysqli->query($sql);
 			$mysqli->close();
 			$client->replyMessage(array(
   			'replyToken' => $event['replyToken'],
