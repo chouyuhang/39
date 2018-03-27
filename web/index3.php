@@ -81,7 +81,7 @@ foreach ($client->parseEvents() as $event) {
 		    $address=$message['address']; $title=$message['title'];
                     $longitude=$message['longitude']; $latitude=$message['latitude']; 
                     date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");
-		    if($time==date("2018-03-27 20:32:40")){
+		    if($time==date("2018-03-27 20:36:50")||$time==date("2018-03-27 20:36:51")||$time==date("2018-03-27 20:3:52")){
 		    $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
 		    $response = $bot->pushMessage($userid, $textMessageBuilder);
 		    }    
