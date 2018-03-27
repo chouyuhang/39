@@ -48,13 +48,8 @@ foreach ($client->parseEvents() as $event) {
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
   				$number = $row['number'] ;
  			 }
-	            	if(mysqli_connect_errno()){ 
-                        	$debugmsg='資料庫連線失敗';
-                    	}
-                    	else{
-			 	$mysqli->close();
-		    	}
 			$number+=1;
+			$mysqli->close();
 			$client->replyMessage(array(
   			'replyToken' => $event['replyToken'],
     			'messages' => array(
