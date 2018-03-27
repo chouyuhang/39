@@ -54,21 +54,21 @@ foreach ($client->parseEvents() as $event) {
   			'replyToken' => $event['replyToken'],
     			'messages' => array(
             		array(
-                	'type' => 'template', // 訊息類型 (模板)
-                	'altText' => 'Example confirm template', // 替代文字
+                	'type' => 'template', 
+                	'altText' => 'Example confirm template', 
                 	'template' => array(
-                    	'type' => 'confirm', // 類型 (確認)
-                    	'text' => '你現在是進還是出?', // 文字
+                    	'type' => 'confirm',
+                    	'text' => '你現在是進還是出?',
                     	'actions' => array(
                         	array(
-                            	'type' => 'message', // 類型 (訊息)
-                            	'label' => '進', // 標籤 1
-                            	'text' => '進'// 用戶發送文字 1
+                            	'type' => 'message', 
+                            	'label' => '進', 
+                            	'text' => '進'
                         	),
                         	array(
-                            	'type' => 'message', // 類型 (訊息)
-                            	'label' => '出', // 標籤 2
-                            	'text' => '出' // 用戶發送文字 2
+                            	'type' => 'message', 
+                            	'label' => '出', 
+                            	'text' => '出' 
                         	)
                     	))))));
 		    }
@@ -83,7 +83,7 @@ foreach ($client->parseEvents() as $event) {
                     date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");
 		    if($m_message=="安安"){
 		    $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
-		    $response = $bot->pushMessage('<to>', $textMessageBuilder);
+		    $response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
 		    }    
 		    else if($m_message=="進"){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
