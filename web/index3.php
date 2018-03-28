@@ -87,7 +87,7 @@ foreach ($client->parseEvents() as $event) {
 		    	$sql = "SELECT DISTINCT userid from mysql";
 		    	$result = $mysqli->query($sql);
 		    	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($m_message);
-		    	$response = $bot->pushMessage($sql, $textMessageBuilder);
+		    	$response = $bot->pushMessage($result, $textMessageBuilder);
 		    }    
 		    else if($m_message=="進"){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
