@@ -84,7 +84,7 @@ foreach ($client->parseEvents() as $event) {
 		    //if($m_message!="" && $userid!='Ud9a4e29db28b8b07a78cecf6d8ec3bdb' && $roomid!='R8466f385da9bd8eac6fb509622c0a892'){
 	            if($m_message!=""){
 		    	$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-		    	$sql = "SELECT userid from mysql";
+		    	$sql = "SELECT DISTINCT userid from mysql";
 		    	$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
   				$user = $row['userid'] ;
