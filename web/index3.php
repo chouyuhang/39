@@ -49,11 +49,11 @@ foreach ($client->parseEvents() as $event) {
 			$number=$number+1;
 			$sql="INSERT INTO mysql (number,name,userid,worktime,location,longitude,latitude) VALUES ('$number','$displayName','$userid','$time','$address','$longitude','$latitude')";
 			$result = $mysqli->query($sql);
-			$sql="SELECT worktype from mysql where worktype=''";
+			$sql="SELECT worktype from mysql where worktype='';
 			$result = $mysqli->query($sql);
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
-		    	$response = $bot->pushMessage('R8466f385da9bd8eac6fb509622c0a892', $textMessageBuilder);
-			$mysqli->close();
+		    	$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
+			sleep(10);
 			$client->replyMessage(array(
   			'replyToken' => $event['replyToken'],
     			'messages' => array(
