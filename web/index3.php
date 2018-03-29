@@ -49,7 +49,10 @@ foreach ($client->parseEvents() as $event) {
 			$number=$number+1;
 			$sql="INSERT INTO mysql (number,name,userid,worktime,location,longitude,latitude) VALUES ('$number','$displayName','$userid','$time','$address','$longitude','$latitude')";
 			$result = $mysqli->query($sql);
-			$sql="SELECT number from mysql";
+			$sql="SELECT worktype from mysql where worktype=''";
+			$result = $mysqli->query($sql);
+			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
+		    	$response = $bot->pushMessage('R8466f385da9bd8eac6fb509622c0a892', $textMessageBuilder);
 			$mysqli->close();
 			$client->replyMessage(array(
   			'replyToken' => $event['replyToken'],
