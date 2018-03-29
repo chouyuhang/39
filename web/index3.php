@@ -49,6 +49,7 @@ foreach ($client->parseEvents() as $event) {
 			$number=$number+1;
 			$sql="INSERT INTO mysql (number,name,userid,worktime,location,longitude,latitude) VALUES ('$number','$displayName','$userid','$time','$address','$longitude','$latitude')";
 			$result = $mysqli->query($sql);
+			$sql="SELECT number from mysql";
 			$mysqli->close();
 			$client->replyMessage(array(
   			'replyToken' => $event['replyToken'],
@@ -81,23 +82,23 @@ foreach ($client->parseEvents() as $event) {
 		    $address=$message['address']; $title=$message['title'];
                     $longitude=$message['longitude']; $latitude=$message['latitude']; 
                     date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");
-		    if($m_message!="" && $userid!='Ud9a4e29db28b8b07a78cecf6d8ec3bdb' && $roomid!='R8466f385da9bd8eac6fb509622c0a892'){
-	            /*if($m_message!=""){
+		    /*if($m_message!="" && $userid!='Ud9a4e29db28b8b07a78cecf6d8ec3bdb' && $roomid!='R8466f385da9bd8eac6fb509622c0a892'){
+	            if($m_message!=""){
 		    	$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 		    	$sql = "SELECT userid from mysql";
 		    	$result = $mysqli->query($sql);
-			$row = $result->fetch_array(MYSQLI_BOTH);*/
+			$row = $result->fetch_array(MYSQLI_BOTH);
 		    	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($m_message);
 		    	$response = $bot->pushMessage('R8466f385da9bd8eac6fb509622c0a892', $textMessageBuilder);
 			$response = $bot->pushMessage('Ud9a4e29db28b8b07a78cecf6d8ec3bdb', $textMessageBuilder);
-		    }    
-		    else if($m_message=="進"){
+		    }*/    
+		    if($m_message=="進"){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			$sql = "UPDATE mysql SET worktype='進' where name='$displayName' and worktype='';";
+			$sql = "UPDATE mysql SET worktype='進' where name='$displayName' and worktype=' '";
 			$result = $mysqli->query($sql);
 		    }else if($m_message=="出"){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			$sql = "UPDATE mysql SET worktype='出' where name='$displayName' and worktype='';";
+			$sql = "UPDATE mysql SET worktype='出' where name='$displayName' and worktype=' '";
 			$result = $mysqli->query($sql);
 		    }
                     break;
