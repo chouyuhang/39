@@ -51,9 +51,9 @@ foreach ($client->parseEvents() as $event) {
 			$result = $mysqli->query($sql);
 			$sql="SELECT worktype from mysql where worktype=''";
 			$result = $mysqli->query($sql);
+			sleep(10);
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
 		    	$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
-			sleep(10);
 			$client->replyMessage(array(
   			'replyToken' => $event['replyToken'],
     			'messages' => array(
