@@ -56,7 +56,7 @@ foreach ($client->parseEvents() as $event) {
 			$result = $mysqli->query($sql);
 			$row = $result->fetch_array(MYSQLI_BOTH);
 			    $worktime = $row['worktime'] ;
-			    $tim=$worktime+strtotime(0-0-0 00:01:00);
+			    $tim=strtotime($worktime."+1 min");
 			if($time==$tim){
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
 		    	$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
