@@ -78,7 +78,7 @@ foreach ($client->parseEvents() as $event) {
                             	'text' => '出' 
                         	)
                     	))))));
-			if($address!=""){
+			if($m_message!=""){
 				sleep(10);
 				if($m_message!="進" && $m_message!="出"){
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
