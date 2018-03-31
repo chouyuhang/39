@@ -56,12 +56,7 @@ foreach ($client->parseEvents() as $event) {
 			$result = $mysqli->query($sql);
 			$row = $result->fetch_array(MYSQLI_BOTH);
 			    $worktime = $row['worktime'] ;
-			    $tim=strtotime($worktime."+1 min");
-			if($m_message=="" && $address!="" && $m_message!="進" && $m_message!="出"){
-			sleep(10);
-			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
-		    	$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
-			}    
+			    $tim=strtotime($worktime."+1 min");   
 			$client->replyMessage(array(
   			'replyToken' => $event['replyToken'],
     			'messages' => array(
@@ -83,6 +78,11 @@ foreach ($client->parseEvents() as $event) {
                             	'text' => '出' 
                         	)
                     	))))));
+			if($m_message=="" && $address!="" && $m_message!="進" && $m_message!="出"){
+			sleep(10);
+			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
+		    	$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
+			}
 		    }
 			break;
 		case 'text':
