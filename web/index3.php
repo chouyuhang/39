@@ -70,13 +70,18 @@ foreach ($client->parseEvents() as $event) {
                             	'text' => '出' 
                         	)
                     	))))));
-			sleep(10);
 			$sql="SELECT worktype from mysql where worktype=''";
 			$result = $mysqli->query($sql);
 			    while($row = $result->fetch_array(MYSQLI_BOTH)) {
   				$worktype = $row['worktype'] ;
  			 }
-			if($worktype==""){
+			$sql="SELECT worktime from mysql where worktype=''";
+			$result = $mysqli->query($sql);
+		            while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  				$worktime = $row['worktime'] ;
+ 			 }
+			    $tim=strtotime($worktime)+sleep(7);
+			if($worktime==$tim){
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
 		    		$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
 			}
