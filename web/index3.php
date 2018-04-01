@@ -82,11 +82,10 @@ foreach ($client->parseEvents() as $event) {
 				
  			 }
 				$tim=date('Y-m-d H:i:s', strtotime($worktime))+date('Y-m-d H:i:s', strtotime("+5 seconds"));
-			if(sleep(5)){
-				if($m_message==""){
+			sleep(5);
+				if($worktype==""){
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
 		    		$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
-			}
 			}
 		    }
 			break;
