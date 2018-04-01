@@ -37,7 +37,7 @@ foreach ($client->parseEvents() as $event) {
 		    $address=$message['address']; $title=$message['title'];
                     $longitude=$message['longitude']; $latitude=$message['latitude']; 
                     date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");
-		    $number=0;$a="/^121.60/";$b="/^25.07/";
+		    $number=0;$a="/^121.605/";$b="/^25.07/";
                     //if($address!="" || $longitude=="121.605876" || $latitude=="25.07087"){
 		    if($address!="" && $longitude=$a && $latitude=$b){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
@@ -70,7 +70,7 @@ foreach ($client->parseEvents() as $event) {
                             	'text' => '出' 
                         	)
                     	))))));
-			/*$sql="SELECT worktype from mysql where worktype=''";
+			$sql="SELECT worktype from mysql where worktype=''";
 			$result = $mysqli->query($sql);
 			    while($row = $result->fetch_array(MYSQLI_BOTH)) {
   				$worktype = $row['worktype'] ;
@@ -82,11 +82,10 @@ foreach ($client->parseEvents() as $event) {
 				
  			 }
 				$tim=date('Y-m-d H:i:s', strtotime($worktime))+date('Y-m-d H:i:s', strtotime("+5 seconds"));
-			sleep(5);
-				if($worktype==""){
+				if($worktime=$tim){
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
 		    		$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
-			}*/
+			}
 		    }
 			break;
 		case 'text':
