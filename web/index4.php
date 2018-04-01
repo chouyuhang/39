@@ -46,7 +46,9 @@ foreach ($client->parseEvents() as $event) {
 		    	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($m_message);
 		    	$response = $bot->pushMessage('R8466f385da9bd8eac6fb509622c0a892', $textMessageBuilder);
 			$response = $bot->pushMessage('Ud9a4e29db28b8b07a78cecf6d8ec3bdb', $textMessageBuilder);
-		    }  
+		    }
+		break;
+            }
             break;
         default:
             error_log("Unsupporeted event type: " . $event['type']);
