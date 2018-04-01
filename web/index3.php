@@ -79,12 +79,13 @@ foreach ($client->parseEvents() as $event) {
 			$result = $mysqli->query($sql);
 		            while($row = $result->fetch_array(MYSQLI_BOTH)) {
   				$worktime = $row['worktime'] ;
- 			 }
-			    $tim=strtotime($worktime)+sleep(7);
-			if($worktime==$tim){
+				    $tim=date('Y-m-d', strtotime($worktime)+date('Y-m-d', strtotime("+5 seconds");
+			if(date('Y-m-d', strtotime($worktime)+date('Y-m-d', strtotime("+5 seconds")){
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
 		    		$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
 			}
+ 			 }
+			    
 		    }
 			break;
 		case 'text':
