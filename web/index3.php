@@ -81,7 +81,7 @@ foreach ($client->parseEvents() as $event) {
   				$worktime = $row['worktime'] ;
 				
  			 }
-				$tim=date('Y-m-d', strtotime($worktime,"+5 seconds");
+				$tim=date('Y-m-d H:i:s', strtotime($worktime,"+5 seconds");
 			if($worktime==$tim){
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
 		    		$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
