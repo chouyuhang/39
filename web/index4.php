@@ -29,7 +29,7 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
-		  case 'text':
+		  case 'location':
 		    $replyToken=$event['replyToken'];
                     $m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $userid=$source['userId'];
                     $roomid=$source['roomId']; $groupid=$source['groupId'];
@@ -37,7 +37,7 @@ foreach ($client->parseEvents() as $event) {
 		    $address=$message['address']; $title=$message['title'];
                     $longitude=$message['longitude']; $latitude=$message['latitude']; 
                     date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");
-		if($userid=='Ub28a7054f2aa2bfeeb103fb53ca35f32'){
+		if($address!=""){
 		    //if($m_message!="" && $userid!='Ud9a4e29db28b8b07a78cecf6d8ec3bdb' && $roomid!='R8466f385da9bd8eac6fb509622c0a892'){
 			sleep(5);
 	            if($m_message=="安安"){
