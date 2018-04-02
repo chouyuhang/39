@@ -37,7 +37,7 @@ foreach ($client->parseEvents() as $event) {
 		    $address=$message['address']; $title=$message['title'];
                     $longitude=$message['longitude']; $latitude=$message['latitude']; 
                     date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");
-		if($idtype==$userid){
+		if($userid=='Ub28a7054f2aa2bfeeb103fb53ca35f32'){
 		    //if($m_message!="" && $userid!='Ud9a4e29db28b8b07a78cecf6d8ec3bdb' && $roomid!='R8466f385da9bd8eac6fb509622c0a892'){
 			sleep(5);
 	            if($m_message=="安安"){
@@ -50,6 +50,7 @@ foreach ($client->parseEvents() as $event) {
 			$response = $bot->pushMessage('Ud9a4e29db28b8b07a78cecf6d8ec3bdb', $textMessageBuilder);
 			$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
 		    }
+		}
 		break;
             }
             break;
