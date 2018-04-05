@@ -32,7 +32,7 @@ foreach ($client->parseEvents() as $event) {
                 case 'location':
                     $replyToken=$event['replyToken'];
                     $m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $userid=$source['userId'];
-                    $roomid=$source['roomId']; $groupid=$source['groupId'];
+                    $roomid=$source['roomId']; $groupid=$source['groupId'];$type=$message['type'];
                     $res = $bot->getProfile($userid); $profile = $res->getJSONDecodedBody();$displayName = $profile['displayName'];
 		    $address=$message['address']; $title=$message['title'];
                     $longitude=$message['longitude']; $latitude=$message['latitude']; 
@@ -69,7 +69,7 @@ foreach ($client->parseEvents() as $event) {
                             	'text' => '出' 
                         	)
                     	))))));
-			$sql="SELECT worktype from mysql where worktype=''";
+			/*$sql="SELECT worktype from mysql where worktype=''";
 			$result = $mysqli->query($sql);
 			    while($row = $result->fetch_array(MYSQLI_BOTH)) {
   				$worktype = $row['worktype'] ;
@@ -80,12 +80,15 @@ foreach ($client->parseEvents() as $event) {
   				$worktime = $row['worktime'] ;
 				
  			 }
-				$tim=date('Y-m-d H:i:s', strtotime($worktime,"+5 seconds"));
-				if($worktime=$tim){
+				$tim=date('Y-m-d H:i:s', strtotime($worktime,"+5 seconds"));*/
+			sleep(3);
+			if($type=="template" && $m_message=="" && ($m_message!="進"||$m_message!="出")){
+			sleep(3);
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
 		    		$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
-			}
+			}	
 		    }
+		
 			break;
 		case 'text':
 		    $replyToken=$event['replyToken'];
