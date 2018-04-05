@@ -69,12 +69,12 @@ foreach ($client->parseEvents() as $event) {
                             	'text' => '出' 
                         	)
                     	))))));
-			/*$sql="SELECT worktype from mysql where worktype=''";
+			$sql="SELECT worktype from mysql where worktype=''";
 			$result = $mysqli->query($sql);
 			    while($row = $result->fetch_array(MYSQLI_BOTH)) {
   				$worktype = $row['worktype'] ;
  			 }
-			$sql="SELECT worktime from mysql where worktype=''";
+			/*$sql="SELECT worktime from mysql where worktype=''";
 			$result = $mysqli->query($sql);
 		            while($row = $result->fetch_array(MYSQLI_BOTH)) {
   				$worktime = $row['worktime'] ;
