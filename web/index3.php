@@ -47,7 +47,8 @@ foreach ($client->parseEvents() as $event) {
  			 }
 			$number=$number+1;
 			$sql="INSERT INTO mysql (number,name,userid,worktime,location,longitude,latitude) VALUES ('$number','$displayName','$userid','$time','$address','$longitude','$latitude')";
-			$result = $mysqli->query($sql);  
+			$result = $mysqli->query($sql);
+			if($type=="template"){
 			$client->replyMessage(array(
   			'replyToken' => $event['replyToken'],
     			'messages' => array(
@@ -82,11 +83,11 @@ foreach ($client->parseEvents() as $event) {
  			 }
 				$tim=date('Y-m-d H:i:s', strtotime($worktime,"+5 seconds"));*/
 			sleep(3);
-			if($type=="template" && $m_message=="" && ($m_message!="進"||$m_message!="出")){
-			sleep(3);
+			if($m_message=="" && ($m_message!="進"||$m_message!="出")){
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
 		    		$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
-			}	
+			}
+		    }
 		    }
 		
 			break;
