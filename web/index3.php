@@ -71,9 +71,9 @@ foreach ($client->parseEvents() as $event) {
                     	))))));
 			$sql="SELECT worktype from mysql where worktype=''";
 			$result = $mysqli->query($sql);
-			    while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  				$worktype = $row['worktype'] ;
- 			 }
+			    //while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  				//$worktype = $row['worktype'] ;
+ 			 //}
 			/*$sql="SELECT worktime from mysql where worktype=''";
 			$result = $mysqli->query($sql);
 		            while($row = $result->fetch_array(MYSQLI_BOTH)) {
@@ -86,7 +86,6 @@ foreach ($client->parseEvents() as $event) {
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
 		    		$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
 			}
-		    }
 		    }
 		
 			break;
