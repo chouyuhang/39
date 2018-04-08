@@ -74,7 +74,7 @@ foreach ($client->parseEvents() as $event) {
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
   				$name = $row['name'] ;
  			 }
-			if($name!="")){
+			if($name!=""){
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
 		    		$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
 			}
