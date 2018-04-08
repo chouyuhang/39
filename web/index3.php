@@ -69,6 +69,7 @@ foreach ($client->parseEvents() as $event) {
                             	'text' => '出' 
                         	)
                     	))))));
+			sleep(3);    
 			$sql="SELECT name from mysql where worktype=''";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
