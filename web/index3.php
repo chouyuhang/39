@@ -38,6 +38,7 @@ foreach ($client->parseEvents() as $event) {
                     $longitude=$message['longitude']; $latitude=$message['latitude']; 
                     date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");
 		    $number=0;$a="/^121.605/";$b="/^25.07/";$lon=$longitude;$lat=$latitude;
+		
 		    if($address!="" && $lon=$a && $lat=$b){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql="SELECT number from mysql";
@@ -81,7 +82,28 @@ foreach ($client->parseEvents() as $event) {
 			}
 		    }
 		
-			break;
+		if($m_message=="進"){
+		$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+			$sql="SELECT number from mysql";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  				$number = $row['number'] ;
+ 			 }
+			$number=$number+1;
+			$sql="INSERT INTO mysql (number,name,userid,worktime,worktype) VALUES ('$number','$displayName','$userid','$time','進')";
+			$result = $mysqli->query($sql);
+		$sql="SELECT name from mysql where worktype='進' and name=''";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  				$name = $row['name'] ;
+ 			 }
+			if($name==""){
+			
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
+		    		$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
+			}
+		}
+		break;
 		case 'text':
 		    $replyToken=$event['replyToken'];
                     $m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $userid=$source['userId'];
