@@ -81,7 +81,14 @@ foreach ($client->parseEvents() as $event) {
 		    		$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
 			}
 		    }
-		
+			    
+		$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+			$sql="SELECT worktype from mysql where worktype=''";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  				$worktype = $row['worktype'] ;
+ 			 }
+		if($worktype!=""){
 		if($m_message=="進"){
 		$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql="SELECT number from mysql";
@@ -92,17 +99,18 @@ foreach ($client->parseEvents() as $event) {
 			$number=$number+1;
 			$sql="INSERT INTO mysql (number,name,userid,worktime,worktype) VALUES ('$number','$displayName','$userid','$time','進')";
 			$result = $mysqli->query($sql);
-		$sql="SELECT name from mysql where worktype='進' and name=''";
+			
+			sleep(3);
+			$sql="SELECT name from mysql where worktype='進' and name=''";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
   				$name = $row['name'] ;
  			 }
-			if($name==""){
-			
-				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
+			if($name==""){			
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位");
 		    		$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
 			}
-		}
+		}}
 		break;
 		case 'text':
 		    $replyToken=$event['replyToken'];
