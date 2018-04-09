@@ -98,7 +98,7 @@ foreach ($client->parseEvents() as $event) {
  			 }
 			if($name!=""){
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
-		    		$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
+		    		$response = $bot->pushMessage('$userid', $textMessageBuilder);
 			}
 		    } 
 		 }
@@ -130,7 +130,7 @@ foreach ($client->parseEvents() as $event) {
 			}
 			if($location!=""){
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("歡迎你的到來!!" . "\n" . "祝你使用愉快!!");
-		    	$response = $bot->pushMessage('$userId', $textMessageBuilder);
+		    	$response = $bot->pushMessage('$userid', $textMessageBuilder);
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql = "UPDATE mysql SET worktype='進' where name='$displayName' and worktype=' '";
 			$result = $mysqli->query($sql);
@@ -146,7 +146,7 @@ foreach ($client->parseEvents() as $event) {
 			$sql="INSERT INTO mysql (number,name,userid,worktime,worktype) VALUES ('$number','$displayName','$userid','$time','進')";
 			$result = $mysqli->query($sql);
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
-		    	$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
+		    	$response = $bot->pushMessage('$userid', $textMessageBuilder);
 			}
 		    }else if($m_message=="出"){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
@@ -157,7 +157,7 @@ foreach ($client->parseEvents() as $event) {
 			}
 			if($location!=""){
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("歡迎你的到來!!" . "\n" . "祝你使用愉快!!");
-		    	$response = $bot->pushMessage('$userId', $textMessageBuilder);
+		    	$response = $bot->pushMessage('$userid', $textMessageBuilder);
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql = "UPDATE mysql SET worktype='出' where name='$displayName' and worktype=' '";
 			$result = $mysqli->query($sql);
@@ -173,7 +173,7 @@ foreach ($client->parseEvents() as $event) {
 			$sql="INSERT INTO mysql (number,name,userid,worktime,worktype) VALUES ('$number','$displayName','$userid','$time','出')";
 			$result = $mysqli->query($sql);
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
-		    	$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
+		    	$response = $bot->pushMessage('$userid', $textMessageBuilder);
 			}
 		    }
                     break;
