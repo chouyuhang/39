@@ -102,7 +102,7 @@ foreach ($client->parseEvents() as $event) {
 		    		$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
 			}
 		    }
-			    
+	    	}    
 		/*if($worktype!="" && $m_message=="進"){
 		//if($m_message=="進"){
 		$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
