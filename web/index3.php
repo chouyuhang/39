@@ -41,6 +41,27 @@ foreach ($client->parseEvents() as $event) {
 		
 		    if($address!="" && $lon=$a && $lat=$b){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+			$sql = "select worktype from mysql where location='' and longitude='' and latitude='' and userid='$userid'";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  			$worktype = $row['worktype'] ;
+			}	
+			if($worktype!=""){
+			    $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");	
+			    $sql = "UPDATE mysql SET location='$address',longitude='$longitude',latitude='$latitude' where name='$displayName' and worktype!=''and userid='$userid';";
+			    $result = $mysqli->query($sql);
+					$client->replyMessage(array(
+        				'replyToken' => $event['replyToken'],
+     			   		'messages' => array(
+				   	array(
+                                          'type' => 'text',
+                                          'text' => "定位成功!!"
+                                       	),
+ 				)));
+			}    
+		    }
+		    else{
+			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql="SELECT number from mysql";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
@@ -82,12 +103,6 @@ foreach ($client->parseEvents() as $event) {
 			}
 		    }
 			    
-		$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			$sql="SELECT worktype from mysql where worktype!=''";
-			$result = $mysqli->query($sql);
-			while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  				$worktype = $row['worktype'] ;
- 			 }
 		/*if($worktype!="" && $m_message=="進"){
 		//if($m_message=="進"){
 		$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
@@ -132,16 +147,18 @@ foreach ($client->parseEvents() as $event) {
 		    }*/    
 		    if($m_message=="進"){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+			$sql = "SELECT location from mysql where worktype='' and userid='$userId'";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  			$location = $row['location'] ;
+			}
+			if($location!=""){
+			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql = "UPDATE mysql SET worktype='進' where name='$displayName' and worktype=' '";
 			$result = $mysqli->query($sql);
-		    }else if($m_message=="出"){
+			}
+			else{
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			$sql = "UPDATE mysql SET worktype='出' where name='$displayName' and worktype=' '";
-			$result = $mysqli->query($sql);
-		    }
-		    if($worktype!="" && $m_message=="進"){
-		//if($m_message=="進"){
-		$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql="SELECT number from mysql";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
@@ -150,18 +167,36 @@ foreach ($client->parseEvents() as $event) {
 			$number=$number+1;
 			$sql="INSERT INTO mysql (number,name,userid,worktime,worktype) VALUES ('$number','$displayName','$userid','$time','進')";
 			$result = $mysqli->query($sql);
-			
-			sleep(3);
-			$sql="SELECT name from mysql where worktype='進' and name=''";
+			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
+		    	$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
+			}
+		    }else if($m_message=="出"){
+			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+			$sql = "SELECT location from mysql where worktype='' and userid='$userId'";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  				$name = $row['name'] ;
- 			 }
-			if($name==""){			
-				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位");
-		    		$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
+  			$location = $row['location'] ;
 			}
-		}//}
+			if($location!=""){
+			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+			$sql = "UPDATE mysql SET worktype='出' where name='$displayName' and worktype=' '";
+			$result = $mysqli->query($sql);
+			}
+			else{
+			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+			$sql="SELECT number from mysql";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  				$number = $row['number'] ;
+ 			 }
+			$number=$number+1;
+			$sql="INSERT INTO mysql (number,name,userid,worktime,worktype) VALUES ('$number','$displayName','$userid','$time','出')";
+			$result = $mysqli->query($sql);
+			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
+		    	$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
+			}
+			}
+		    }
                     break;
             }
             break;
