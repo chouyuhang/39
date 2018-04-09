@@ -129,8 +129,13 @@ foreach ($client->parseEvents() as $event) {
   			$location = $row['location'] ;
 			}
 			if($location!=""){
-			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("歡迎你的到來!!" . "\n" . "祝你使用愉快!!");
-		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
+			'replyToken' => $event['replyToken'],
+     			   'messages' => array(
+			     array(
+                                          'type' => 'text',
+                                          'text' => "歡迎你的到來!!" . "\n" . "祝你使用愉快!!"
+                                   ),
+ 	       		)));
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql = "UPDATE mysql SET worktype='進' where name='$displayName' and worktype=' '";
 			$result = $mysqli->query($sql);
@@ -156,8 +161,14 @@ foreach ($client->parseEvents() as $event) {
   			$location = $row['location'] ;
 			}
 			if($location!=""){
-			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("歡迎你的到來!!" . "\n" . "祝你使用愉快!!");
-		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
+			$client->replyMessage(array(
+        		'replyToken' => $event['replyToken'],
+     			   'messages' => array(
+			     array(
+                                          'type' => 'text',
+                                          'text' => "歡迎你的到來!!" . "\n" . "祝你使用愉快!!"
+                                   ),
+ 	       		)));
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql = "UPDATE mysql SET worktype='出' where name='$displayName' and worktype=' '";
 			$result = $mysqli->query($sql);
