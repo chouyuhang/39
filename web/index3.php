@@ -195,7 +195,6 @@ foreach ($client->parseEvents() as $event) {
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 		    	$response = $bot->pushMessage('Ub28a7054f2aa2bfeeb103fb53ca35f32', $textMessageBuilder);
 			}
-			}
 		    }
                     break;
             }
