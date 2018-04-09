@@ -129,6 +129,7 @@ foreach ($client->parseEvents() as $event) {
   			$location = $row['location'] ;
 			}
 			if($location!=""){
+			$client->replyMessage(array(
 			'replyToken' => $event['replyToken'],
      			   'messages' => array(
 			     array(
