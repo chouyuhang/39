@@ -156,6 +156,7 @@ foreach ($client->parseEvents() as $event) {
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
 			$sql="SELECT location from mysql where location!=''";
+			sleep(2);
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
   				$location = $row['location'] ;
@@ -199,6 +200,7 @@ foreach ($client->parseEvents() as $event) {
 			$result = $mysqli->query($sql);
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
+			sleep(2);
 			$sql="SELECT location from mysql where location!=''";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
