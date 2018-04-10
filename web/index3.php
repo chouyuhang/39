@@ -37,7 +37,7 @@ foreach ($client->parseEvents() as $event) {
 		    $address=$message['address']; $title=$message['title'];
                     $longitude=$message['longitude']; $latitude=$message['latitude']; 
                     date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");
-		    $number=0;$a="/^122.56/";$b="/^25.08/";$lon=$longitude;$lat=$latitude;
+		    $number=0;$a="/^121.56/";$b="/^25.08/";$lon=$longitude;$lat=$latitude;
 		
 		    if($address!="" && $lon=$a && $lat=$b){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
