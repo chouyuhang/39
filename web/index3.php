@@ -37,9 +37,8 @@ foreach ($client->parseEvents() as $event) {
 		    $address=$message['address']; $title=$message['title'];
                     $longitude=$message['longitude']; $latitude=$message['latitude']; 
                     date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");
-		    $number=0;$a="/^121.56/";$b="/^25.08/";$lon=$longitude;$lat=$latitude;
 		
-		    if($address!="" && $lon=$a && $lat=$b){
+		    if($address!="" && $longitude>=121.5651 && $longitude<=121.5654 && $latitude>=25.0865 && $latitude<=25.0868){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql = "select worktype from mysql where location='' and longitude='' and latitude='' and userid='$userid'";
 			$result = $mysqli->query($sql);
@@ -58,6 +57,13 @@ foreach ($client->parseEvents() as $event) {
                                           'text' => "定位成功!!"
                                        	),
  				)));
+			$sql="SELECT worktype from mysql where userid='$userid'";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  				$worktype = $row['worktype'] ;
+ 			 }
+			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." ".$worktype);
+		    	$response = $bot->pushMessage('R8466f385da9bd8eac6fb509622c0a892', $textMessageBuilder);
 			}
 		    else{
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
@@ -155,16 +161,6 @@ foreach ($client->parseEvents() as $event) {
 			$result = $mysqli->query($sql);
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
-			$sql="SELECT location from mysql where location!=''";
-			sleep(2);
-			$result = $mysqli->query($sql);
-			while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  				$location = $row['location'] ;
- 			 }
-				if($location!=""){
-				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." "."進");
-		    		$response = $bot->pushMessage('R8466f385da9bd8eac6fb509622c0a892', $textMessageBuilder);
-				}
 			}
 		    }else if($m_message=="出"){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
@@ -200,16 +196,6 @@ foreach ($client->parseEvents() as $event) {
 			$result = $mysqli->query($sql);
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
-			sleep(2);
-			$sql="SELECT location from mysql where location!=''";
-			$result = $mysqli->query($sql);
-			while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  				$location = $row['location'] ;
- 			 }
-				if($location!=""){
-				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." "."出");
-		    		$response = $bot->pushMessage('R8466f385da9bd8eac6fb509622c0a892', $textMessageBuilder);
-				}
 			}
 		    }
                     break;
