@@ -131,14 +131,23 @@ foreach ($client->parseEvents() as $event) {
 			$index=0;
 			$sql = "SELECT inside from inin";
 			$result = $mysqli->query($sql);
-			$row = $result->fetch_array(MYSQLI_BOTH);
-  				$inside = $row['inside'] ;
+			while($row = $result->fetch_array(MYSQLI_BOTH)){
+  				$inside[$index] = $row['inside'] ;
+				$index++;
+			}
+			$join=false;
+			foreach ($inside as $value){
+ 			if(preg_match("/$value/i","$m_message")){
+  				$join=true;
+			 }
+			}
 			//$sql = "SELECT inside from inin where inside like '%$m_message%'";
 			//$result = $mysqli->query($sql);
 			//while($row = $result->fetch_array(MYSQLI_BOTH)){
 				
 			//}
-		    if(preg_match("/$inside/i","$m_message")){
+			    
+		    if($join){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql = "SELECT location from mysql where worktype='' and userid='$userid'";
 			$result = $mysqli->query($sql);
