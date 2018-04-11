@@ -176,7 +176,7 @@ foreach ($client->parseEvents() as $event) {
 		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
 			}
 		    }
-		$sql = "SELECT outside from outout";
+		/*$sql = "SELECT outside from outout";
 			$result = $mysqli->query($sql);
 			$row = $result->fetch_array(MYSQLI_BOTH);
   				$outside = $row['outside'] ;
@@ -215,7 +215,7 @@ foreach ($client->parseEvents() as $event) {
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
 			}
-		    }
+		    }*/
                     break;
             }
             break;
