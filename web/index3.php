@@ -202,8 +202,8 @@ foreach ($client->parseEvents() as $event) {
 			$result = $mysqli->query($sql);
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
-			}*/
-		    }
+			}
+		    }*/
                     break;
             }
             break;
