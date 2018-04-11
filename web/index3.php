@@ -128,14 +128,17 @@ foreach ($client->parseEvents() as $event) {
 			$response = $bot->pushMessage('Ud9a4e29db28b8b07a78cecf6d8ec3bdb', $textMessageBuilder);
 		    }*/
 		    $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			$index=0;
+			$index=0;$join=false;
 			$sql = "SELECT inside from inin";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)){
-  				$inside[$index] = $row['inside'] ;
-				$index++;
+  				//$inside[$index] = $row['inside'] ;
+				//$index++;
+ 			if(preg_match("/$row['inside']/i","$m_message")){
+  				$join=true;
+			 }
 			}
-			$join=false;
+			/*$join=false;
 			foreach ($inside as $value){
  			if(preg_match("/$value/i","$m_message")){
   				$join=true;
@@ -153,7 +156,7 @@ foreach ($client->parseEvents() as $event) {
  			if(preg_match("/$value/i","$m_message")){
   				$unjoin=true;
 			 }
-			}
+			}*/
 			    
 		    if($join){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
