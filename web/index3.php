@@ -183,11 +183,20 @@ foreach ($client->parseEvents() as $event) {
 		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
 			}
 		    }
-		/*$sql = "SELECT outside from outout";
+			$index=0;
+			$sql = "SELECT outside from outout";
 			$result = $mysqli->query($sql);
-			$row = $result->fetch_array(MYSQLI_BOTH);
-  				$outside = $row['outside'] ;
-		   else if(preg_match("/$outside/i","$m_message")){
+			while($row = $result->fetch_array(MYSQLI_BOTH)){
+  				$outside[$index] = $row['outside'] ;
+				$index++;
+			}
+			$unjoin=false;
+			foreach ($outside as $value){
+ 			if(preg_match("/$value/i","$m_message")){
+  				$unjoin=true;
+			 }
+			}
+		   else if($unjoin){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql = "SELECT location from mysql where worktype='' and userid='$userid'";
 			$result = $mysqli->query($sql);
@@ -222,7 +231,7 @@ foreach ($client->parseEvents() as $event) {
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
 			}
-		    }*/
+		    }
                     break;
             }
             break;
