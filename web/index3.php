@@ -130,7 +130,7 @@ foreach ($client->parseEvents() as $event) {
 		    $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql = "SELECT inside from inandout";
 			$result = $mysqli->query($sql);
-			$row = $result->fetch_array(MYSQLI_BOTH)
+			$row = $result->fetch_array(MYSQLI_BOTH);
   				$inside = $row['inside'] ;
 		    if(preg_match("/$inside/i","$m_message")){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
