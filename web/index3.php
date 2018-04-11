@@ -132,11 +132,10 @@ foreach ($client->parseEvents() as $event) {
 			$result = $mysqli->query($sql);
 			$row = $result->fetch_array(MYSQLI_BOTH);
   				$inside = $row['inside'] ;
-			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			$sq = "SELECT outside from outout";
-			$result = $mysqli->query($sq);
-			$ro = $result->fetch_array(MYSQLI_BOTH);
-  				$outside = $ro['outside'] ;
+			$sql = "SELECT outside from outout";
+			$result = $mysqli->query($sql);
+			$row = $result->fetch_array(MYSQLI_BOTH);
+  				$outside = $row['outside'] ;
 		    if(preg_match("/$inside/","$m_message")){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql = "SELECT location from mysql where worktype='' and userid='$userid'";
