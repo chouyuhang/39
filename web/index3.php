@@ -136,7 +136,7 @@ foreach ($client->parseEvents() as $event) {
 			$result = $mysqli->query($sq);
 			$ro = $result->fetch_array(MYSQLI_BOTH);
   				$outside = $ro['outside'] ;
-		    if(preg_match("/$inside/i","$m_message")){
+		    if(preg_match("/$inside/","$m_message")){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql = "SELECT location from mysql where worktype='' and userid='$userid'";
 			$result = $mysqli->query($sql);
@@ -172,7 +172,7 @@ foreach ($client->parseEvents() as $event) {
 		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
 			}
 		    }
-		   else if(preg_match("/$outside/i","$m_message")){
+		   else if(preg_match("/$outside/","$m_message")){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql = "SELECT location from mysql where worktype='' and userid='$userid'";
 			$result = $mysqli->query($sql);
