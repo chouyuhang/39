@@ -131,10 +131,9 @@ foreach ($client->parseEvents() as $event) {
 			$index=0;
 			$sql = "SELECT inside from inin";
 			$result = $mysqli->query($sql);
-			while($row = $result->fetch_array(MYSQLI_BOTH)){
-  				$inside[$index] = $row['inside'] ;
-				$index++;
-			}
+			$row = $result->fetch_array(MYSQLI_BOTH))
+  				$inside = $row['inside'] ;
+			
 			//$sql = "SELECT inside from inin where inside like '%$m_message%'";
 			//$result = $mysqli->query($sql);
 			//while($row = $result->fetch_array(MYSQLI_BOTH)){
