@@ -128,7 +128,7 @@ foreach ($client->parseEvents() as $event) {
 			$response = $bot->pushMessage('Ud9a4e29db28b8b07a78cecf6d8ec3bdb', $textMessageBuilder);
 		    }*/
 		    $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			$join=false;
+			$join=false;$unjoin=false;
 			$sql = "SELECT inside from inin";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)){
@@ -141,11 +141,10 @@ foreach ($client->parseEvents() as $event) {
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)){
   				$outside = $row['outside'] ;
-			}
-			$unjoin=false;
- 			if(preg_match("/$outside/i","$m_message")){
+			if(preg_match("/$outside/i","$m_message")){
   				$unjoin=true;
 			 }
+			}
 			/*$join=false;
 			foreach ($inside as $value){
  			if(preg_match("/$value/i","$m_message")){
