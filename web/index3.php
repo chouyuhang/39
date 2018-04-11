@@ -132,6 +132,10 @@ foreach ($client->parseEvents() as $event) {
 			$result = $mysqli->query($sql);
 			$row = $result->fetch_array(MYSQLI_BOTH);
   				$inside = $row['inside'] ;
+			$sq = "SELECT outside from outout";
+			$result = $mysqli->query($sq);
+			$ro = $result->fetch_array(MYSQLI_BOTH);
+  				$outside = $ro['outside'] ;
 		    if(preg_match("/$inside/i","$m_message")){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql = "SELECT location from mysql where worktype='' and userid='$userid'";
@@ -168,7 +172,7 @@ foreach ($client->parseEvents() as $event) {
 		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
 			}
 		    }
-		   /*else if(preg_match("/$outside/i","$m_message")){
+		   else if(preg_match("/$outside/i","$m_message")){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql = "SELECT location from mysql where worktype='' and userid='$userid'";
 			$result = $mysqli->query($sql);
@@ -203,7 +207,7 @@ foreach ($client->parseEvents() as $event) {
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
 			}
-		    }*/
+		    }
                     break;
             }
             break;
