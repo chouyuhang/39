@@ -132,9 +132,9 @@ foreach ($client->parseEvents() as $event) {
 			$sql = "SELECT inside from inin";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)){
-  				//$inside[$index] = $row['inside'] ;
+  				$inside = $row['inside'] ;
 				//$index++;
- 			if(preg_match("/$row['inside']/i","$m_message")){
+ 			if(preg_match("/$inside/i","$m_message")){
   				$join=true;
 			 }
 			}
