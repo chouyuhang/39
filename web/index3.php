@@ -126,7 +126,6 @@ foreach ($client->parseEvents() as $event) {
                     $res = $bot->getProfile($userid); $profile = $res->getJSONDecodedBody();$displayName = $profile['displayName'];
 		    $address=$message['address']; $title=$message['title'];
                     $longitude=$message['longitude']; $latitude=$message['latitude'];
-		    $t $data=$posback['data'];
                     date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");
 		    /*if($m_message!="" && $userid!='Ud9a4e29db28b8b07a78cecf6d8ec3bdb' && $roomid!='R8466f385da9bd8eac6fb509622c0a892'){
 	            //if($m_message!=""){
