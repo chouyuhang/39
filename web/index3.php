@@ -251,13 +251,13 @@ foreach ($client->parseEvents() as $event) {
                                      array(
                                     'type' => 'postback',
                                     'label' => 'in',
-				    "data": "action=in&itemid=12"
+				    "data": "action=in&itemid=12",
                                     'text' => '設置成功'
                                 ),
                                     array(
                                     'type' => 'postback',
                                     'label' => 'out',
-				    "data": "action=in&itemid=123"
+				    "data": "action=in&itemid=123",
                                     'text' => '設置成功'
                                  ),
                                     array(
