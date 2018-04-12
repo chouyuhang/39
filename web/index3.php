@@ -115,7 +115,7 @@ foreach ($client->parseEvents() as $event) {
 				$response = $bot->pushMessage($userId, $textMessageBuilder);
 			}
 		     }
-		 }
+		 }}
 		break;
 		case 'text':
 		    $replyToken=$event['replyToken'];
