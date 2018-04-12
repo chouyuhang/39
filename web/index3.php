@@ -62,8 +62,8 @@ foreach ($client->parseEvents() as $event) {
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
   				$worktype = $row['worktype'] ;
  			 }
-			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." ".$worktype);
-		    	$response = $bot->pushMessage('R8466f385da9bd8eac6fb509622c0a892', $textMessageBuilder);
+			//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." ".$worktype);
+		    	//$response = $bot->pushMessage('R8466f385da9bd8eac6fb509622c0a892', $textMessageBuilder);
 			}
 		    else{
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
@@ -96,7 +96,18 @@ foreach ($client->parseEvents() as $event) {
                             	'text' => '出' 
                         	)
                     	))))));
-			    for($i=0;$i<100;$i++){
+			    sleep(3);
+				$sql = "select name from mysql where worktype='' and userid='$userId'";
+				$result = $mysqli->query($sql);
+				while($row = $result->fetch_array(MYSQLI_BOTH)) {
+					$name = $row['name'];
+					
+				}
+			    if($name!=""){
+					$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
+					$response = $bot->pushMessage($userId, $textMessageBuilder);
+				}
+			    /*for($i=0;$i<100;$i++){
 				sleep(3);
 				$sql = "select worktype,worktime from mysql where worktype='' and userid='$userId'";
 				$result = $mysqli->query($sql);
@@ -114,8 +125,8 @@ foreach ($client->parseEvents() as $event) {
 					$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 					$response = $bot->pushMessage($userId, $textMessageBuilder);
 				}
-				}
-		    		}
+				}*/
+		    	}
 		    }
 		break;
 		case 'text':
