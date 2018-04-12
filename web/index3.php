@@ -106,6 +106,16 @@ foreach ($client->parseEvents() as $event) {
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
 		    		$response = $bot->pushMessage($userid, $textMessageBuilder);
 			}
+			sleep(3);    
+			$sql="SELECT name from mysql where worktype=''";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  				$name = $row['name'] ;
+ 			 }
+			if($name!=""){
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
+		    		$response = $bot->pushMessage($userid, $textMessageBuilder);
+			}
 		    } 
 		 }
 		break;
