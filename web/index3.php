@@ -114,8 +114,9 @@ foreach ($client->parseEvents() as $event) {
 					$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 					$response = $bot->pushMessage($userId, $textMessageBuilder);
 				}
-			}
-		    }	
+				}
+		    		}
+		    }
 		break;
 		case 'text':
 		    $replyToken=$event['replyToken'];
