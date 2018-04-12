@@ -259,7 +259,7 @@ foreach ($client->parseEvents() as $event) {
                                     'text' => '出'
                                  ),
                                     array(
-                                    'type' => 'uri', 
+                                    'type' => 'message', 
                                     'label' => 'nothing',
                                     'text' => '毫無相關'
                              )
