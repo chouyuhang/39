@@ -38,7 +38,7 @@ foreach ($client->parseEvents() as $event) {
                     $longitude=$message['longitude']; $latitude=$message['latitude']; 
                     date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");
 		
-		    if($address!="" && $longitude>=121.5651 && $longitude<=121.5654 && $latitude>=25.0865 && $latitude<=25.0868){
+		    if($address!="" && $longitude>=121.5650 && $longitude<=121.5659 && $latitude>=25.0860 && $latitude<=25.0869){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql = "select worktype from mysql where location='' and longitude='' and latitude='' and userid='$userid'";
 			$result = $mysqli->query($sql);
@@ -96,26 +96,26 @@ foreach ($client->parseEvents() as $event) {
                             	'text' => '出' 
                         	)
                     	))))));
-			for($i=0;$i<100;$i++){
-			sleep(3);   
-			$sql="SELECT worktype,worktime from mysql worktype='' and userid='$userId'";
-			$result = $mysqli->query($sql);
-			while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  				$worktype = $row['worktype'];
-				$worktime = $row['worktime'];
- 			 }
-			$sql = "select worktype from mysql where worktime='$worktime' and userid='$userId'";
-			$result = $mysqli->query($sql);
-			while($row = $result->fetch_array(MYSQLI_BOTH)) {
-				$worktype2 = $row['worktype'];
-			}	
-			if($worktype2!="")break;
-			if($worktype==""){
-				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
-				$response = $bot->pushMessage($userId, $textMessageBuilder);
+			    for($i=0;$i<100;$i++){
+				sleep(3);
+				$sql = "select location,worktime from mysql where location='' and userid='$userId'";
+				$result = $mysqli->query($sql);
+				while($row = $result->fetch_array(MYSQLI_BOTH)) {
+					$location = $row['location'];
+					$worktime = $row['worktime'];
+				}
+				$sql = "select location from mysql where worktime='$worktime' and userid='$userId'";
+				$result = $mysqli->query($sql);
+				while($row = $result->fetch_array(MYSQLI_BOTH)) {
+					$location2 = $row['location'];
+				}	
+				if($location2!="")break;
+				if($location==""){
+					$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
+					$response = $bot->pushMessage($userId, $textMessageBuilder);
+				}
 			}
-		     }
-		 }}
+			}
 		break;
 		case 'text':
 		    $replyToken=$event['replyToken'];
