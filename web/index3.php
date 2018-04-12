@@ -249,14 +249,16 @@ foreach ($client->parseEvents() as $event) {
                                 'text' => '請問'.$m_message.'代表什麼',
                                 'actions' => array(
                                      array(
-                                    'type' => 'message',
+                                    'type' => 'postback',
                                     'label' => 'in',
-                                    'text' => '進'
+				    "data": "action=in&itemid=12"
+                                    'text' => '設置成功'
                                 ),
                                     array(
-                                    'type' => 'message',
+                                    'type' => 'postback',
                                     'label' => 'out',
-                                    'text' => '出'
+				    "data": "action=in&itemid=123"
+                                    'text' => '設置成功'
                                  ),
                                     array(
                                     'type' => 'message', 
