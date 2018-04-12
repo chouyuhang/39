@@ -98,19 +98,19 @@ foreach ($client->parseEvents() as $event) {
                     	))))));
 			    for($i=0;$i<100;$i++){
 				sleep(3);
-				$sql = "select location,worktime from mysql where location='' and userid='$userId'";
+				$sql = "select worktype,worktime from mysql where worktype='' and userid='$userId'";
 				$result = $mysqli->query($sql);
 				while($row = $result->fetch_array(MYSQLI_BOTH)) {
-					$location = $row['location'];
+					$worktype = $row['worktype'];
 					$worktime = $row['worktime'];
 				}
-				$sql = "select location from mysql where worktime='$worktime' and userid='$userId'";
+				$sql = "select worktype from mysql where worktime='$worktime' and userid='$userId'";
 				$result = $mysqli->query($sql);
 				while($row = $result->fetch_array(MYSQLI_BOTH)) {
-					$location2 = $row['location'];
+					$worktype2 = $row['worktype'];
 				}	
-				if($location2!="")break;
-				if($location==""){
+				if($worktype2!="")break;
+				if($worktype==""){
 					$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 					$response = $bot->pushMessage($userId, $textMessageBuilder);
 				}
