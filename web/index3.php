@@ -26,6 +26,13 @@ $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
+	case 'postback':
+		$type=$event['type'];$postback=$type['postback'];$data=$postback['data']
+		  if($data=="action=in&itemid=12"){
+		  	$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			$sql = "insert into ininin (inside) values ('123')";
+			$result = $mysqli->query($sql);
+		  }  
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
@@ -115,7 +122,8 @@ foreach ($client->parseEvents() as $event) {
                     $roomid=$source['roomId']; $groupid=$source['groupId'];
                     $res = $bot->getProfile($userid); $profile = $res->getJSONDecodedBody();$displayName = $profile['displayName'];
 		    $address=$message['address']; $title=$message['title'];
-                    $longitude=$message['longitude']; $latitude=$message['latitude']; 
+                    $longitude=$message['longitude']; $latitude=$message['latitude'];
+		    $t $data=$posback['data'];
                     date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");
 		    /*if($m_message!="" && $userid!='Ud9a4e29db28b8b07a78cecf6d8ec3bdb' && $roomid!='R8466f385da9bd8eac6fb509622c0a892'){
 	            //if($m_message!=""){
@@ -236,7 +244,7 @@ foreach ($client->parseEvents() as $event) {
 		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
 			}
 		    }
-		    else if($m_message!='' && $m_message!='設置成功' && $m_message!='毫無相關'){
+		    if($m_message!='' && $m_message!='設置成功' && $m_message!='毫無相關'){
 			$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
