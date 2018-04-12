@@ -97,8 +97,8 @@ foreach ($client->parseEvents() as $event) {
                         	)
                     	))))));
 			for($i=0;$i<100;$i++){
-			sleep(3);    
-			$sql="SELECT worktype,worktime from mysql location='' and userid='$userId'";
+			sleep(3);   
+			$sql="SELECT worktype,worktime from mysql worktype='' and userid='$userId'";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
   				$worktype = $row['worktype'];
