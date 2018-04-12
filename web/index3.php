@@ -96,7 +96,7 @@ foreach ($client->parseEvents() as $event) {
                             	'text' => '出' 
                         	)
                     	))))));
-			    for($i=0;$i<100;$i++){
+			    //for($i=0;$i<100;$i++){
 				sleep(3);
 				$sql = "select location,worktime from mysql where location='' and userid='$userId'";
 				$result = $mysqli->query($sql);
@@ -115,7 +115,7 @@ foreach ($client->parseEvents() as $event) {
 					$response = $bot->pushMessage($userId, $textMessageBuilder);
 				}
 			}
-			}
+			
 		break;
 		case 'text':
 		    $replyToken=$event['replyToken'];
