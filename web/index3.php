@@ -244,7 +244,7 @@ foreach ($client->parseEvents() as $event) {
 		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
 			}
 		    }
-		    if($m_message!='' && $m_message!='設置成功' && $m_message!='毫無相關'){
+		    /*if($m_message!='' && $m_message!='設置成功' && $m_message!='毫無相關'){
 			$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
@@ -274,7 +274,7 @@ foreach ($client->parseEvents() as $event) {
                                     'text' => '毫無相關'
                              )
                             ))))));  
-		    }
+		    }*/
                     break;
             }
             break;
