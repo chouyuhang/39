@@ -236,6 +236,35 @@ foreach ($client->parseEvents() as $event) {
 		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
 			}
 		    }
+		    else{
+			$client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'template', 
+                                'altText' => 'simple in and out',
+                                'template' => array(
+                                'type' => 'buttons',	
+                                'title' => '選單',
+                                'text' => '請問'.$m_message.'代表什麼',
+                                'actions' => array(
+                                     array(
+                                    'type' => 'message',
+                                    'label' => 'in',
+                                    'text' => '進'
+                                ),
+                                    array(
+                                    'type' => 'message',
+                                    'label' => 'out',
+                                    'text' => '出'
+                                 ),
+                                    array(
+                                    'type' => 'uri', 
+                                    'label' => 'nothing',
+                                    'text' => '毫無相關'
+                             )
+                            ))))));  
+		    }
                     break;
             }
             break;
