@@ -26,14 +26,6 @@ $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
-	case 'postback':
-		$type=$event['type'];$postback=$type['postback'];$data=$postback['data']
-		  if($data=="action=in&itemid=12"){
-		  	$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-			$sql = "insert into ininin (inside) values ('123')";
-			$result = $mysqli->query($sql);
-		  }
-		 break;
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
