@@ -290,7 +290,7 @@ foreach ($client->parseEvents() as $event) {
 			$sql = "select max(name),worktime from mysql where worktype='進'";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)){ 
-				$name = $row['name'];
+				$name = $row['max(name)'];
 				$worktime = $row['worktime'];
 			}
 			    if($worktime==$date){
