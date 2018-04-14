@@ -297,8 +297,6 @@ foreach ($client->parseEvents() as $event) {
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name." ");
 				$response = $bot->pushMessage($userid, $textMessageBuilder);
 			    }
-			}
-	    }
 		    }
                     break;
             }
