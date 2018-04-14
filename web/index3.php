@@ -113,7 +113,7 @@ foreach ($client->parseEvents() as $event) {
 			if($worktype2!="")break;
 			if($worktype==""){
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
-				$response = $bot->pushMessage($userId, $textMessageBuilder);
+				$response = $bot->pushMessage($userid, $textMessageBuilder);
 			}
 		    }}
 		}
@@ -223,7 +223,7 @@ foreach ($client->parseEvents() as $event) {
 				if($location2!="")break;
 				if($location==""){
 					$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
-					$response = $bot->pushMessage($userId, $textMessageBuilder);
+					$response = $bot->pushMessage($userid, $textMessageBuilder);
 				}
 			}
 			//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
@@ -278,7 +278,7 @@ foreach ($client->parseEvents() as $event) {
 				if($location2!="")break;
 				if($location==""){
 					$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
-					$response = $bot->pushMessage($userId, $textMessageBuilder);
+					$response = $bot->pushMessage($userid, $textMessageBuilder);
 				}
 			}
 			//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
