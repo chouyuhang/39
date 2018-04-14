@@ -289,7 +289,7 @@ foreach ($client->parseEvents() as $event) {
 		    	$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql = "select max(name),worktime from mysql where worktype='進'";
 			$result = $mysqli->query($sql);
-			/*while(*/$row = $result->fetch_array(MYSQLI_BOTH) {
+			/*while(*/$row = $result->fetch_array(MYSQLI_BOTH) 
 				$name = $row['name'];
 				$worktime = $row['worktime'];
 			//}
