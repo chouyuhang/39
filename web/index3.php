@@ -115,7 +115,7 @@ foreach ($client->parseEvents() as $event) {
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
 				$response = $bot->pushMessage($userId, $textMessageBuilder);
 			}
-			}
+		    }}
 		}
 		break;
 		case 'text':
