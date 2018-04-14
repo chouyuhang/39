@@ -98,12 +98,12 @@ foreach ($client->parseEvents() as $event) {
                     	))))));
 			$z=0;
 			while($z==0){
-			sleep(3);
+			sleep(5);
 			$sql = "select worktype,worktime from mysql where worktype='' and userid='$userid'";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
 				$worktype = $row['worktype'] ;
-				$worktime=$row['worktime'];
+				$worktime = $row['worktime'];
 			}
 			$sql = "select worktype from mysql where worktime='$worktime' and userid='$userid'";
 			$result = $mysqli->query($sql);
@@ -115,7 +115,8 @@ foreach ($client->parseEvents() as $event) {
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
 				$response = $bot->pushMessage($userid, $textMessageBuilder);
 			}
-		    }}
+		    }
+		  }
 		}
 		break;
 		case 'text':
@@ -125,7 +126,7 @@ foreach ($client->parseEvents() as $event) {
                     $res = $bot->getProfile($userid); $profile = $res->getJSONDecodedBody();$displayName = $profile['displayName'];
 		    $address=$message['address']; $title=$message['title'];
                     $longitude=$message['longitude']; $latitude=$message['latitude'];
-                    date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");
+                    date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");$date=date("Y-m-d");
 		    /*if($m_message!="" && $userid!='Ud9a4e29db28b8b07a78cecf6d8ec3bdb' && $roomid!='R8466f385da9bd8eac6fb509622c0a892'){
 	            //if($m_message!=""){
 		    	$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
@@ -206,9 +207,11 @@ foreach ($client->parseEvents() as $event) {
 			$number=$number+1;
 			$sql="INSERT INTO mysql (number,name,userid,worktime,worktype) VALUES ('$number','$displayName','$userid','$time','進')";
 			$result = $mysqli->query($sql);
+			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
+		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
 			$z=0;
 			while($z==0){
-				sleep(3);
+				sleep(5);
 				$sql = "select location,worktime from mysql where location='' and userid='$userid'";
 				$result = $mysqli->query($sql);
 				while($row = $result->fetch_array(MYSQLI_BOTH)) {
@@ -226,8 +229,6 @@ foreach ($client->parseEvents() as $event) {
 					$response = $bot->pushMessage($userid, $textMessageBuilder);
 				}
 			}
-			//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
-		    	//$response = $bot->pushMessage($userid, $textMessageBuilder);
 			}
 		    }else if($unjoin){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
@@ -261,6 +262,8 @@ foreach ($client->parseEvents() as $event) {
 			$number=$number+1;
 			$sql="INSERT INTO mysql (number,name,userid,worktime,worktype) VALUES ('$number','$displayName','$userid','$time','出')";
 			$result = $mysqli->query($sql);
+			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
+		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
 			$z=0;
 			while($z==0){
 				sleep(3);
@@ -281,9 +284,22 @@ foreach ($client->parseEvents() as $event) {
 					$response = $bot->pushMessage($userid, $textMessageBuilder);
 				}
 			}
-			//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
-		    	//$response = $bot->pushMessage($userid, $textMessageBuilder);
 			}
+		    }else if($m_message=="查"){
+			$same=false;
+		    	$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+			$sql = "select name,worktime from mysql where worktype='進'";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+				$name = $row['name'];
+				$worktime = $row['worktime'];
+			if($worktime==$date){
+				$same=true;
+			}
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("$name." "");
+				$response = $bot->pushMessage($userid, $textMessageBuilder);
+			}
+			
 		    }
                     break;
             }
