@@ -37,8 +37,8 @@ foreach ($client->parseEvents() as $event) {
 		    $address=$message['address']; $title=$message['title'];
                     $longitude=$message['longitude']; $latitude=$message['latitude']; 
                     date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");
-		
-		    if($address!="" && $longitude>=121.5650 && $longitude<=121.5659 && $latitude>=25.0860 && $latitude<=25.0869){
+		    if($address!=""){
+		    //if($address!="" && $longitude>=121.5650 && $longitude<=121.5659 && $latitude>=25.0860 && $latitude<=25.0869){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 			$sql = "select worktype from mysql where location='' and longitude='' and latitude='' and userid='$userid'";
 			$result = $mysqli->query($sql);
