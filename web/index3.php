@@ -298,7 +298,7 @@ foreach ($client->parseEvents() as $event) {
 				$response = $bot->pushMessage($userid, $textMessageBuilder);
 			    }
 			}
-			
+	    }
 		    }
                     break;
             }
