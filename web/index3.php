@@ -296,7 +296,7 @@ foreach ($client->parseEvents() as $event) {
 			if($worktime==$date){
 				$same=true;
 			}
-				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("$name." "");
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name." ");
 				$response = $bot->pushMessage($userid, $textMessageBuilder);
 			}
 			
