@@ -206,8 +206,28 @@ foreach ($client->parseEvents() as $event) {
 			$number=$number+1;
 			$sql="INSERT INTO mysql (number,name,userid,worktime,worktype) VALUES ('$number','$displayName','$userid','$time','進')";
 			$result = $mysqli->query($sql);
-			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
-		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
+			$z=0;
+			while($z==0){
+				sleep(3);
+				$sql = "select location,worktime from mysql where location='' and userid='$userid'";
+				$result = $mysqli->query($sql);
+				while($row = $result->fetch_array(MYSQLI_BOTH)) {
+					$location = $row['location'];
+					$worktime = $row['worktime'];
+				}
+				$sql = "select location from mysql where worktime='$worktime' and userid='$userid'";
+				$result = $mysqli->query($sql);
+				while($row = $result->fetch_array(MYSQLI_BOTH)) {
+					$location2 = $row['location'];
+				}	
+				if($location2!="")break;
+				if($location==""){
+					$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
+					$response = $bot->pushMessage($userId, $textMessageBuilder);
+				}
+			}
+			//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
+		    	//$response = $bot->pushMessage($userid, $textMessageBuilder);
 			}
 		    }else if($unjoin){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
@@ -241,8 +261,28 @@ foreach ($client->parseEvents() as $event) {
 			$number=$number+1;
 			$sql="INSERT INTO mysql (number,name,userid,worktime,worktype) VALUES ('$number','$displayName','$userid','$time','出')";
 			$result = $mysqli->query($sql);
-			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
-		    	$response = $bot->pushMessage($userid, $textMessageBuilder);
+			$z=0;
+			while($z==0){
+				sleep(3);
+				$sql = "select location,worktime from mysql where location='' and userid='$userid'";
+				$result = $mysqli->query($sql);
+				while($row = $result->fetch_array(MYSQLI_BOTH)) {
+					$location = $row['location'];
+					$worktime = $row['worktime'];
+				}
+				$sql = "select location from mysql where worktime='$worktime' and userid='$userid'";
+				$result = $mysqli->query($sql);
+				while($row = $result->fetch_array(MYSQLI_BOTH)) {
+					$location2 = $row['location'];
+				}	
+				if($location2!="")break;
+				if($location==""){
+					$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
+					$response = $bot->pushMessage($userId, $textMessageBuilder);
+				}
+			}
+			//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
+		    	//$response = $bot->pushMessage($userid, $textMessageBuilder);
 			}
 		    }
                     break;
