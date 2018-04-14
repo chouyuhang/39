@@ -96,37 +96,27 @@ foreach ($client->parseEvents() as $event) {
                             	'text' => '出' 
                         	)
                     	))))));
-			    sleep(3);
-				$sql = "select name from mysql where worktype=''";
-				$result = $mysqli->query($sql);
-				while($row = $result->fetch_array(MYSQLI_BOTH)) {
-					$name = $row['name'];					
-				}
-			    if($name!=""){
-					$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
-					$response = $bot->pushMessage($userId, $textMessageBuilder);
-				}
-			    /*for($i=0;$i<100;$i++){
-				sleep(3);
-				$sql = "select worktype,worktime from mysql where worktype='' and userid='$userId'";
-				$result = $mysqli->query($sql);
-				while($row = $result->fetch_array(MYSQLI_BOTH)) {
-					$worktype = $row['worktype'];
-					$worktime = $row['worktime'];
-				}
-				$sql = "select worktype from mysql where worktime='$worktime' and userid='$userId'";
-				$result = $mysqli->query($sql);
-				while($row = $result->fetch_array(MYSQLI_BOTH)) {
-					$worktype2 = $row['worktype'];
-				}	
-				if($worktype2!="")break;
-				if($worktype==""){
-					$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
-					$response = $bot->pushMessage($userId, $textMessageBuilder);
-				}
-				}*/
-		    	}
-		    }
+			$z=0;
+			while($z==0){
+			sleep(3);
+			$sql = "select worktype,worktime from mysql where worktype='' and userid='$userid'";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+				$worktype = $row['worktype'] ;
+				$worktime=$row['worktime'];
+			}
+			$sql = "select worktype from mysql where worktime='$worktime' and userid='$userid'";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+				$worktype2 = $row['worktype'];
+			}	
+			if($worktype2!="")break;
+			if($worktype==""){
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
+				$response = $bot->pushMessage($userId, $textMessageBuilder);
+			}
+			}
+		}
 		break;
 		case 'text':
 		    $replyToken=$event['replyToken'];
