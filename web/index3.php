@@ -293,10 +293,10 @@ foreach ($client->parseEvents() as $event) {
 				$name = $row['name'];
 				$worktime = $row['worktime'];
 			}
-			    if($worktime==$date){
+			    //if($worktime==$date){
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name." ");
 				$response = $bot->pushMessage($userid, $textMessageBuilder);
-			    }
+			    //}
 		    }
                     break;
             }
