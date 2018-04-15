@@ -285,19 +285,64 @@ foreach ($client->parseEvents() as $event) {
 				}
 			}
 			}
-		    }else if($m_message=="查"){
-		    	$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			$sql = "select name,worktime from mysql where worktype='進'";
-			$result = $mysqli->query($sql);
-			while($row = $result->fetch_array(MYSQLI_BOTH)){ 
-				$name = $row['name'];
-				$worktime = $row['worktime'];
+		    }/*else*/ if($m_message!='' && $join=true && $unjoin=true && $m_message!='毫無相關' && $m_message!='查'){
+			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+			if($m_message!='進' && $m_message!='出' && $m_message!='毫無相關'){
+				$sql="INSERT INTO msg (mes) VALUES ('$m_message')";
+				$result = $mysqli->query($sql);
 			}
-			    //if($worktime==$date){
-				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name." ");
-				$response = $bot->pushMessage($userid, $textMessageBuilder);
-			    //}
-		    }
+			$client->replyMessage(array(
+				'replyToken' => $event['replyToken'],
+				'messages' => array(
+					array(
+						'type' => 'template', // 訊息類型 (模板)
+                				'altText' => 'simple in and out', // 替代文字
+                				'template' => array(
+							'type' => 'buttons', // 類型 (按鈕)
+							'title' => '選單', // 標題 <不一定需要>
+							'text' => '請問'.$m_message.'代表什麼', // 文字
+							'actions' => array(
+								array(
+									'type' => 'message', // 類型 (訊息)
+									'label' => '進', // 標籤 1
+									'text' => '進' // 用戶發送文字
+								),
+								array(
+									'type' => 'message', // 類型 (訊息)
+									'label' => '出', // 標籤 2
+									'text' => '出' // 用戶發送文字
+								),
+								array(
+									'type' => 'message', // 類型 (訊息)
+									'label' => '毫無相關', // 標籤 3
+									'text' => '毫無相關' // 用戶發送文字
+								)
+							)
+						),
+					)
+								
+				)
+							
+			)
+								  );
+			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+			$sql = "select mes from msg";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+				$mes = $row['mes'];
+			}
+			if($m_message=="進"){
+				$sql="INSERT INTO inin (inside) VALUES ('$mes')";
+				$result = $mysqli->query($sql);
+				//$sql="delete from test where worktest!=''";
+				//$result = $mysqli->query($sql);
+			}else if($m_message=="出"){
+				$sql="INSERT INTO outout (outside) VALUES ('$mes')";
+				$result = $mysqli->query($sql);
+				//$sql="delete from test where worktest!=''";
+				//$result = $mysqli->query($sql);
+			}
+		}
                     break;
             }
             break;
