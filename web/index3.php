@@ -334,13 +334,13 @@ foreach ($client->parseEvents() as $event) {
 			if($m_message=="進"){
 				$sql="INSERT INTO inin (inside) VALUES ('$mes')";
 				$result = $mysqli->query($sql);
-				//$sql="delete from test where worktest!=''";
-				//$result = $mysqli->query($sql);
+				$sql="delete from msg where mes!=''";
+				$result = $mysqli->query($sql);
 			}else if($m_message=="出"){
 				$sql="INSERT INTO outout (outside) VALUES ('$mes')";
 				$result = $mysqli->query($sql);
-				//$sql="delete from test where worktest!=''";
-				//$result = $mysqli->query($sql);
+				$sql="delete from msg where mes!=''";
+				$result = $mysqli->query($sql);
 			}
 		}
                     break;
