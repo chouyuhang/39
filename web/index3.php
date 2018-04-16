@@ -47,7 +47,7 @@ foreach ($client->parseEvents() as $event) {
 			}	
 			if($worktype!=""){
 			    $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");	
-			    $sql = "UPDATE mysql SET location='$address',longitude='$longitude',latitude='$latitude' where name='$displayName' and worktype!=''and userid='$userid';";
+			    $sql = "UPDATE mysql SET location='$address',longitude='$longitude',latitude='$latitude'worktime2='$time' where name='$displayName' and worktype!=''and userid='$userid';";
 			    $result = $mysqli->query($sql);
 				$client->replyMessage(array(
         				'replyToken' => $event['replyToken'],
@@ -177,10 +177,11 @@ foreach ($client->parseEvents() as $event) {
 			    
 		    if($join){
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			$sql = "SELECT location from mysql where worktype='' and userid='$userid'";
+			$sql = "SELECT location,number from mysql where worktype='' and userid='$userid'";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
   			$location = $row['location'] ;
+			$number=$row['number'];
 			}
 			if($location!=""){
 			$client->replyMessage(array(
@@ -192,10 +193,10 @@ foreach ($client->parseEvents() as $event) {
                                    ),
  	       		)));
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			$sql = "UPDATE mysql SET worktype='進' where name='$displayName' and worktype=' '";
+			$sql = "UPDATE mysql SET worktype='進',worktime2='$time' where name='$displayName' and worktype=' ' and number='$number';";
 			$result = $mysqli->query($sql);
-			//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." "."進");
-		    	//$response = $bot->pushMessage('R8466f385da9bd8eac6fb509622c0a892', $textMessageBuilder);
+			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." "."進");
+		    	$response = $bot->pushMessage('R8466f385da9bd8eac6fb509622c0a892', $textMessageBuilder);
 			}
 			else{
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
@@ -236,6 +237,7 @@ foreach ($client->parseEvents() as $event) {
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
   			$location = $row['location'] ;
+			$number=$row['number'];
 			}
 			if($location!=""){
 			$client->replyMessage(array(
@@ -247,7 +249,7 @@ foreach ($client->parseEvents() as $event) {
                                    ),
  	       		)));
 			$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			$sql = "UPDATE mysql SET worktype='出' where name='$displayName' and worktype=' '";
+			$sql = "UPDATE mysql SET worktype='出',worktime2='$time' where name='$displayName' and worktype=' ' and number='$number';";
 			$result = $mysqli->query($sql);
 			//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." "."出");
 		    	//$response = $bot->pushMessage('R8466f385da9bd8eac6fb509622c0a892', $textMessageBuilder);
