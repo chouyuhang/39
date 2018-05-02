@@ -40,8 +40,8 @@ foreach ($client->parseEvents() as $event) {
 		    $key=rand(1000,9999);
                     if($m_message!=""){
                         $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			            $sql="INSERT INTO mysql (name,msg,worktype,vcode,userid,groupid,worktime) VALUES ('$displayName','$m_message','進','$key','$userid','$groupid','$time')";
-			            $result = $mysqli->query($sql);	
+			$sql="INSERT INTO mysql (name,msg,worktype,vcode,userid,groupid,worktime) VALUES ('$displayName','$m_message','進','$key','$userid','$groupid','$time')";
+			$result = $mysqli->query($sql);	
                         $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($key);
                         $bot->replyMessage($replyToken,$msg);
                     }
