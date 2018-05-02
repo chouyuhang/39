@@ -38,14 +38,31 @@ foreach ($client->parseEvents() as $event) {
                     $longitude=$message['longitude']; $latitude=$message['latitude'];
                     date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");$date=date("Y-m-d");
 		    $key=rand(1000,9999);
-                    if($m_message!=""){
+                    if($m_message=="進"){
                         $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			$sql="INSERT INTO mysql (name,msg,worktype,vcode,userid,groupid,worktime) VALUES ('$displayName','$m_message','進','$key','$userid','$groupid','$time')";
+			$sql="INSERT INTO mysql (name,msg,vcode,userid,groupid,worktime) VALUES ('$displayName','$m_message','$key','$userid','$groupid','$time')";
 			$result = $mysqli->query($sql);	
                         $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($key);
                         $bot->replyMessage($replyToken,$msg);
                     }
-                    break;
+		    $sql = "select vcode from mysql where worktype="" and userid='$userid'";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  				$vcode = $row['vcode'] ;
+			}
+		    if($m_message==$vcode){
+		    	$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");	
+			$sql = "UPDATE mysql SET worktype='進' where name='$displayName' and userid='$userid';";
+			$client->replyMessage(array(
+        				'replyToken' => $event['replyToken'],
+     			   		'messages' => array(
+				   	array(
+                                          'type' => 'text',
+                                          'text' => "驗證成功!!"
+                                       	),
+ 				)));
+		    }
+                 break;
             }
             break;
         default:
