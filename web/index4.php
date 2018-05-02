@@ -43,7 +43,10 @@ foreach ($client->parseEvents() as $event) {
                     $pictureUrl=$message['pictureUrl'];$res = $bot->getProfile($id);$profile = $res->getJSONDecodedBody();
                     $displayName = $profile['displayName'];
                     date_default_timezone_set('Asia/Taipei');
-                    if($m_message=="安安"){
+                    if($m_message!=""){
+                        $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+			            $sql="INSERT INTO mysql (msg,vcode) VALUES ('$m_message','randomkeys(4)')";
+			            $result = $mysqli->query($sql);	
                         $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(randomkeys(4));
                         $bot->replyMessage($replyToken,$msg);
                     }
