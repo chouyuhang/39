@@ -25,9 +25,9 @@ $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 function randomkeys($length){
-$pattern = "1234567890abcdefghijklmnopqrstuvwxyz";
+$pattern = "1234567890";
 for($i=0;$i<$length;$i++){
-$key .= $pattern{rand(0,35)};
+$key .= $pattern{rand(0,10)};
 }
 return $key;
 }
@@ -44,7 +44,7 @@ foreach ($client->parseEvents() as $event) {
                     $displayName = $profile['displayName'];
                     date_default_timezone_set('Asia/Taipei');
                     if($m_message=="安安"){
-                        $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(randomkeys(8));
+                        $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(randomkeys(4));
                         $bot->replyMessage($replyToken,$msg);
                     }
                     break;
