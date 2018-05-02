@@ -46,7 +46,7 @@ foreach ($client->parseEvents() as $event) {
                         $bot->replyMessage($replyToken,$msg);
                     }
 		    $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-		    $sql = "select vcode from mysql where worktype="" and userid='$userid'";
+		    $sql = "select vcode from mysql where worktype='' and userid='$userid'";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
   				$vcode = $row['vcode'] ;
