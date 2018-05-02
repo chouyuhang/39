@@ -24,13 +24,6 @@ $channelSecret = getenv('LINE_CHANNEL_SECRET');
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
-function randomkeys($length){
-$pattern = "1234567890";
-for($i=0;$i<$length;$i++){
-$key .= $pattern{rand(0,10)};
-}
-return $key;
-}
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
@@ -43,11 +36,12 @@ foreach ($client->parseEvents() as $event) {
                     $pictureUrl=$message['pictureUrl'];$res = $bot->getProfile($id);$profile = $res->getJSONDecodedBody();
                     $displayName = $profile['displayName'];
                     date_default_timezone_set('Asia/Taipei');
+		    $key=rand(1000,9999);
                     if($m_message!=""){
                         $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			            $sql="INSERT INTO mysql (msg,vcode) VALUES ('$m_message','randomkeys(4)')";
+			            $sql="INSERT INTO mysql (msg,vcode) VALUES ('$m_message','$key')";
 			            $result = $mysqli->query($sql);	
-                        $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(randomkeys(4));
+                        $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($key);
                         $bot->replyMessage($replyToken,$msg);
                     }
                     break;
