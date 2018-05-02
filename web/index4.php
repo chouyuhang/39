@@ -31,15 +31,16 @@ foreach ($client->parseEvents() as $event) {
             switch ($message['type']) {
                 case 'text':
                     $replyToken=$event['replyToken'];
-                	$m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $id=$source['userId'];
+                    $m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $userid=$source['userId'];
                     $roomid=$source['roomId']; $groupid=$source['groupId'];
-                    $pictureUrl=$message['pictureUrl'];$res = $bot->getProfile($id);$profile = $res->getJSONDecodedBody();
-                    $displayName = $profile['displayName'];
-                    date_default_timezone_set('Asia/Taipei');
+                    $res = $bot->getProfile($userid); $profile = $res->getJSONDecodedBody();$displayName = $profile['displayName'];
+		    $address=$message['address']; $title=$message['title'];
+                    $longitude=$message['longitude']; $latitude=$message['latitude'];
+                    date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");$date=date("Y-m-d");
 		    $key=rand(1000,9999);
                     if($m_message!=""){
                         $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
-			            $sql="INSERT INTO test (msg,vcode) VALUES ('$m_message','$key')";
+			            $sql="INSERT INTO mysql (name,msg,worktype,vcode,userid,groupid,worktime) VALUES ('$displayName','$m_message','進','$key','$userid','$groupid','$time')";
 			            $result = $mysqli->query($sql);	
                         $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($key);
                         $bot->replyMessage($replyToken,$msg);
