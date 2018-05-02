@@ -44,6 +44,8 @@ foreach ($client->parseEvents() as $event) {
 			$result = $mysqli->query($sql);	
                         $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($key);
                         $bot->replyMessage($replyToken,$msg);
+			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請輸入驗證碼");
+			$response = $bot->pushMessage($userid, $textMessageBuilder);
                     }
 		    $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 		    $sql = "select vcode from mysql where worktype='' and userid='$userid'";
@@ -53,7 +55,34 @@ foreach ($client->parseEvents() as $event) {
 			}
 		    if($m_message==$vcode){
 		    	$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");	
-			$sql = "UPDATE mysql SET worktype='進' where name='$displayName' and userid='$userid';";
+			$sql = "UPDATE mysql SET worktype='進' where name='$displayName' and userid='$userid' and worktype='';";
+			$client->replyMessage(array(
+        				'replyToken' => $event['replyToken'],
+     			   		'messages' => array(
+				   	array(
+                                          'type' => 'text',
+                                          'text' => "驗證成功!!"
+                                       	),
+ 				)));
+		    }
+		    if($m_message=="出"){
+                        $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+			$sql="INSERT INTO mysql (name,msg,vcode,userid,groupid,worktime) VALUES ('$displayName','$m_message','$key','$userid','$groupid','$time')";
+			$result = $mysqli->query($sql);	
+                        $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($key);
+                        $bot->replyMessage($replyToken,$msg);
+			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請輸入驗證碼");
+			$response = $bot->pushMessage($userid, $textMessageBuilder);
+                    }
+		    $mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+		    $sql = "select vcode from mysql where worktype='' and userid='$userid'";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  				$vcode = $row['vcode'] ;
+			}
+		    if($m_message==$vcode){
+		    	$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");	
+			$sql = "UPDATE mysql SET worktype='出' where name='$displayName' and userid='$userid';";
 			$client->replyMessage(array(
         				'replyToken' => $event['replyToken'],
      			   		'messages' => array(
