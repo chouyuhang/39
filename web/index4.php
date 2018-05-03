@@ -55,7 +55,7 @@ foreach ($client->parseEvents() as $event) {
 			}
 		    if($m_message==$vcode){
 		    	$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");	
-			$sql = "UPDATE mysql SET worktype='進' where name='$displayName' and userid='$userid' and worktype='';";
+			$sql = "UPDATE mysql SET worktype='進' where userid='$userid' and worktype='';";
 			$client->replyMessage(array(
         				'replyToken' => $event['replyToken'],
      			   		'messages' => array(
@@ -82,7 +82,7 @@ foreach ($client->parseEvents() as $event) {
 			}
 		    if($m_message==$vcode){
 		    	$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");	
-			$sql = "UPDATE mysql SET worktype='出' where name='$displayName' and userid='$userid';";
+			$sql = "UPDATE mysql SET worktype='出' where userid='$userid' and worktype='';";
 			$client->replyMessage(array(
         				'replyToken' => $event['replyToken'],
      			   		'messages' => array(
